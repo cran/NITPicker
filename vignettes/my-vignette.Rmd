@@ -1,0 +1,100 @@
+---
+title: "NITPicker"
+author: "Daphne Ezer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{NITPicker}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Often, researchers will conduct a few high-resolution time course experiments (or densely sample points along a spatial axis), but then they must select a subset of points to sample in follow-up experiments due to financial constraints.  NITPicker is a tool to select the best points to subsample.  We present three different definitions of what constitutes a `good' set of time points:
+
+- (f1) A good set of time points is a set that can accurately be used to interpolate the complete shape of the curve over time.  (i.e. We select a subset of time points that minise the L2-error between the curve interpolated between the sampled points and the curve interpolated between all the points in the high resolution time course)
+- (f2) A good set of points is a set that can accurately distinguish the shape of the curve representing the difference between the experimental condition and the control.  In other words, we calculate the difference between the control curve and the experimental curve, and then apply f1.
+- (f3) A good set of points is a set that can accurately distinguish the shape of the inverse coefficient of variation.  
+
+Please note that this is not a very fast value to compute-- it may take a few hours to complete on a large dataset.  The precise definition and motivation for these three criteria can be found at: https://doi.org/10.1101/301796
+
+Please note that this package relies heavily on the fdasrvf package, which is used to generate probability distributions of curves, based on a set of example functions.
+
+## References
+
+Please cite the following if you use this R package:
+
+Ezer, D. and Keir J.C. Selection of time points for costly experiments: a comparison between human intuition and computer-aided experimental design. bioarxiv, \doi:10.1101/301796 (2018).
+
+*****
+
+It might also be advisable to cite this paper, which presents the fdasrvf package which is an important part of this project:
+
+Tucker, J. D., Wu, W., Srivastava, A., Generative Models for Function Data using Phase and Amplitude Separation, Computational Statistics and Data Analysis (2012), 10.1016/j.csda.2012.12.001.
+
+For more background on why it might be useful to minimise the L2-error for finding optimal time points to sample, please see:
+
+Michael Kleyman, Emre Sefer, Teodora Nicola, Celia Espinoza, Divya Chhabra, James S Hagood, Naftali Kaminski, Namasivayam Ambalavanan, Ziv Bar-Joseph. Selecting the most appropriate time points to profile in high-throughput studies. eLife 2017;6:e18541 (2017).
+
+
+## Demo of F1
+In this example, we try to find 4 months to subsample that will let us estimate the shape of the curves as accurately as possible (minimise L2-error).  In this case, we sample only 3 example curves from the distribution of curves when estimating the integral-- this should be much higher (100 curves is usually suitable), but we make it 3 here to speed up loading the vignette.
+
+Note that the tables that are printed as the evaluation are the optimisation tables that are used as part of the NITPicker algorithm's dynamic programming algorithm.
+
+```{r}
+library(fda)
+library(NITPicker)
+ mat=CanadianWeather$monthlyTemp #load data - a matrix with 12 rows, representing months (time); and 35 columns, representing cities (experiments)
+ a=findPathF1(c(1:12), mat, 4, numPerts=3) #find a set of points that help predict the shape of the curve
+ print(a) #indices of months to select for follow-up experiments
+ print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected
+```
+
+
+## Demo of F2
+
+In this example, we consider Canadian cities to be different experimental conditions, and we consider Resolute, Canada to be the control condition.  We want to find a set of points that will enable us to estimate the profile of the difference in temperature between Resolute and other cities in Canada. In this case, we sample only 3 example curves from the distribution of curves when estimating the integral-- this should be much higher (100 curves is usually suitable), but we make it 3 here to speed up loading the vignette.
+
+Note that the tables that are printed as the evaluation are the optimisation tables that are used as part of the NITPicker algorithm's dynamic programming algorithm.
+
+```{r}
+library(fda)
+library(NITPicker)
+mat=CanadianWeather$monthlyTemp #load data - a matrix with 12 rows, representing months (time); and 35 columns, representing cities (experiments)
+ y=CanadianWeather$monthlyTemp[,"Resolute"]
+a=findPathF2(c(1:12), y, mat, 4, numPerts=3) #find a set of points that help predict the shape of the curve
+print(a) #indices of months to select for follow-up experiments
+print(rownames(CanadianWeather$monthlyTemp)[a])
+```
+
+## Demo of F3
+
+In this example, we try to identify points that can predict the shape of the curve of the difference between the temperatures of Canadian cities that are along the Atlantic with those that are Continental-- however, we don't care too much about sampling time points where there is lots of noise, so we normalise this by the variance at each point.  
+
+In this case, we sample only 3 example curves from the distribution of curves when estimating the integral-- this should be much higher (100 curves is usually suitable), but we make it 3 here to speed up loading the vignette.
+
+Note that the tables that are printed as the evaluation are the optimisation tables that are used as part of the NITPicker algorithm's dynamic programming algorithm.
+
+```{r}
+library(fda)
+library(NITPicker)
+#Set up data:
+atlanticCities=which(CanadianWeather$region[as.character(colnames(CanadianWeather$monthlyTemp))]=="Atlantic")
+ matAtlantic=CanadianWeather$monthlyTemp[, names(atlanticCities)]
+ 
+ continentalCities=which(CanadianWeather$region[as.character(colnames(CanadianWeather$monthlyTemp))]=="Continental")
+ matContinental=CanadianWeather$monthlyTemp[, names(continentalCities)]
+ 
+ #find a set of points that helps capture the difference between Atlantic and Continental cities, normalised by the variance
+ a=findPathF3(c(1:12),  matAtlantic,  matContinental, 4, numPerts=3) #find a set of points that help predict the shape of the curve
+ print(a) #indices of months to select for follow-up experiments
+ print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected
+```
+

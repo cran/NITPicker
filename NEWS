@@ -1,0 +1,2 @@
+NITPicker
+This version of the tool provides methods for identifying the best subset of time points to test under the f1, f2, and f3 metrics described in the vignettes.  Splines are used to interpolate between points prior to sampling from the probability distribution of functions, but it is currently not used to interpolate between points when calculating the L2 error as part of the dynamic programming algorithm in order to decrease the runtime.

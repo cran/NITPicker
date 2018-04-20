@@ -1,0 +1,15 @@
+dbb45425418d3a6d1564cec62a532046 *DESCRIPTION
+6c888eb960f09e6a45b64856a1435b5f *NAMESPACE
+d80c15cbbd79778cfe51fd3c2778825f *NEWS
+a19b29013e8ddc9f6abda5f5001da080 *R/Pathfinder.R
+fcd8a9b6e0bab1b28f9499cba9cb0f67 *README.md
+923fb660e37c397bb0b4fe7a0bcc4213 *build/vignette.rds
+54842996eaf2b9a7997d8033c16d6abd *inst/doc/my-vignette.R
+e4cc1bb1e122acf53d01c5cbff1b74d5 *inst/doc/my-vignette.Rmd
+3da14af2bbdb19252a713db563dcfdaf *inst/doc/my-vignette.html
+50ad16b1a207eafaf8107cc95ee13d6f *man/L2.Rd
+256a5e2f8f4286561adc13f8dfd5c7df *man/findPathF1.Rd
+7201dae3715141a62092a48fa3aa0bf3 *man/findPathF2.Rd
+1f3227904ce90ad6f0819ede8d4abb7c *man/findPathF3.Rd
+73a7e29e8e21f24c7dcdb05d85aa77f7 *man/generatePerturbations.Rd
+e4cc1bb1e122acf53d01c5cbff1b74d5 *vignettes/my-vignette.Rmd

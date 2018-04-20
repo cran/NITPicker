@@ -1,0 +1,2 @@
+export("generatePerturbations", "findPathF1", "findPathF2", "findPathF3", "L2")
+import("fdasrvf", "fda", "fda.usc", "stats")
