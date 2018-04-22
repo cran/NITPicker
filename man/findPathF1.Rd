@@ -5,7 +5,7 @@
 \title{Find best subset of points for follow-up experiments, using F1 metric}
 \usage{
 findPathF1(tp, training, numSubSamples, spline = 1, resampleTraining = T,
-  iter = 20, knots = 100, numPerts = 1000)
+  iter = 20, knots = 100, numPerts = 1000, fast = T)
 }
 \arguments{
 \item{tp}{A numerical vector of time points (or spatial coordinates along a single axis)}
@@ -23,6 +23,8 @@ findPathF1(tp, training, numSubSamples, spline = 1, resampleTraining = T,
 \item{knots}{A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping}
 
 \item{numPerts}{a positive integer, representing the number of sampled curves to output.}
+
+\item{fast}{is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.}
 }
 \value{
 An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.

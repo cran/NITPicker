@@ -12,7 +12,7 @@
 
 <meta name="author" content="Daphne Ezer" />
 
-<meta name="date" content="2018-04-20" />
+<meta name="date" content="2018-04-22" />
 
 <title>NITPicker</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">NITPicker</h1>
 <h4 class="author"><em>Daphne Ezer</em></h4>
-<h4 class="date"><em>2018-04-20</em></h4>
+<h4 class="date"><em>2018-04-22</em></h4>
 
 
 
@@ -323,7 +323,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt; This is mgcv 1.8-23. For overview type 'help(&quot;mgcv-package&quot;)'.</span></a>
 <a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; Loading required package: rpart</span></a>
 <a class="sourceLine" id="cb1-17" data-line-number="17"> mat=CanadianWeather<span class="op">$</span>monthlyTemp <span class="co">#load data - a matrix with 12 rows, representing months (time); and 35 columns, representing cities (experiments)</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"> a=<span class="kw">findPathF1</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), mat, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">3</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"> a=<span class="kw">findPathF1</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), mat, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">500</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
 <a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; lambda =   0.0 </span></a>
 <a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; Initializing...</span></a>
@@ -353,151 +353,145 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb1-45" data-line-number="45"><span class="co">#&gt; [4,]  Inf</span></a>
 <a class="sourceLine" id="cb1-46" data-line-number="46"><span class="co">#&gt; [5,]  Inf</span></a>
 <a class="sourceLine" id="cb1-47" data-line-number="47"><span class="co">#&gt;          [,1] [,2]</span></a>
-<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt; [1,] 3.621742  Inf</span></a>
+<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt; [1,] 405386.3  Inf</span></a>
 <a class="sourceLine" id="cb1-49" data-line-number="49"><span class="co">#&gt; [2,]      Inf    0</span></a>
 <a class="sourceLine" id="cb1-50" data-line-number="50"><span class="co">#&gt; [3,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb1-51" data-line-number="51"><span class="co">#&gt; [4,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb1-52" data-line-number="52"><span class="co">#&gt; [5,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb1-53" data-line-number="53"><span class="co">#&gt;          [,1]     [,2]     [,3]</span></a>
-<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt; [1,] 133.3451      Inf      Inf</span></a>
-<a class="sourceLine" id="cb1-55" data-line-number="55"><span class="co">#&gt; [2,]      Inf 5.668084 3.621742</span></a>
-<a class="sourceLine" id="cb1-56" data-line-number="56"><span class="co">#&gt; [3,]      Inf      Inf 0.000000</span></a>
+<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt; [1,] 12754641      Inf      Inf</span></a>
+<a class="sourceLine" id="cb1-55" data-line-number="55"><span class="co">#&gt; [2,]      Inf 402987.9 405386.3</span></a>
+<a class="sourceLine" id="cb1-56" data-line-number="56"><span class="co">#&gt; [3,]      Inf      Inf      0.0</span></a>
 <a class="sourceLine" id="cb1-57" data-line-number="57"><span class="co">#&gt; [4,]      Inf      Inf      Inf</span></a>
 <a class="sourceLine" id="cb1-58" data-line-number="58"><span class="co">#&gt; [5,]      Inf      Inf      Inf</span></a>
-<a class="sourceLine" id="cb1-59" data-line-number="59"><span class="co">#&gt;          [,1]    [,2]      [,3]       [,4]</span></a>
-<a class="sourceLine" id="cb1-60" data-line-number="60"><span class="co">#&gt; [1,] 748.3137     Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-61" data-line-number="61"><span class="co">#&gt; [2,]      Inf 28.1367 4.5472787 133.345107</span></a>
-<a class="sourceLine" id="cb1-62" data-line-number="62"><span class="co">#&gt; [3,]      Inf     Inf 0.9255366   3.621742</span></a>
-<a class="sourceLine" id="cb1-63" data-line-number="63"><span class="co">#&gt; [4,]      Inf     Inf       Inf   0.000000</span></a>
-<a class="sourceLine" id="cb1-64" data-line-number="64"><span class="co">#&gt; [5,]      Inf     Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-65" data-line-number="65"><span class="co">#&gt;          [,1]     [,2]     [,3]        [,4]        [,5]</span></a>
-<a class="sourceLine" id="cb1-66" data-line-number="66"><span class="co">#&gt; [1,] 2263.264      Inf      Inf         Inf         Inf</span></a>
-<a class="sourceLine" id="cb1-67" data-line-number="67"><span class="co">#&gt; [2,]      Inf 69.35294 8.477366 133.6449597 748.3137091</span></a>
-<a class="sourceLine" id="cb1-68" data-line-number="68"><span class="co">#&gt; [3,]      Inf      Inf 4.855624   3.9215948   4.5472787</span></a>
-<a class="sourceLine" id="cb1-69" data-line-number="69"><span class="co">#&gt; [4,]      Inf      Inf      Inf   0.2998527   0.9255366</span></a>
-<a class="sourceLine" id="cb1-70" data-line-number="70"><span class="co">#&gt; [5,]      Inf      Inf      Inf         Inf   0.0000000</span></a>
-<a class="sourceLine" id="cb1-71" data-line-number="71"><span class="co">#&gt;          [,1]     [,2]      [,3]       [,4]        [,5]         [,6]</span></a>
-<a class="sourceLine" id="cb1-72" data-line-number="72"><span class="co">#&gt; [1,] 4825.478      Inf       Inf        Inf         Inf          Inf</span></a>
-<a class="sourceLine" id="cb1-73" data-line-number="73"><span class="co">#&gt; [2,]      Inf 112.3561 13.219538 134.575208 748.4339064 2263.2644594</span></a>
-<a class="sourceLine" id="cb1-74" data-line-number="74"><span class="co">#&gt; [3,]      Inf      Inf  9.597795   4.851843   4.6674760    8.4773663</span></a>
-<a class="sourceLine" id="cb1-75" data-line-number="75"><span class="co">#&gt; [4,]      Inf      Inf       Inf   1.230101   1.0457339    3.9215948</span></a>
-<a class="sourceLine" id="cb1-76" data-line-number="76"><span class="co">#&gt; [5,]      Inf      Inf       Inf        Inf   0.1201973    0.2998527</span></a>
-<a class="sourceLine" id="cb1-77" data-line-number="77"><span class="co">#&gt;          [,1]     [,2]     [,3]      [,4]       [,5]        [,6]</span></a>
-<a class="sourceLine" id="cb1-78" data-line-number="78"><span class="co">#&gt; [1,] 7404.123      Inf      Inf       Inf        Inf         Inf</span></a>
-<a class="sourceLine" id="cb1-79" data-line-number="79"><span class="co">#&gt; [2,]      Inf 99.70077 13.75664 143.37729 755.372079 2265.390453</span></a>
-<a class="sourceLine" id="cb1-80" data-line-number="80"><span class="co">#&gt; [3,]      Inf      Inf 10.13489  13.65392  11.605649   10.603359</span></a>
-<a class="sourceLine" id="cb1-81" data-line-number="81"><span class="co">#&gt; [4,]      Inf      Inf      Inf  10.03218   7.983907    6.047588</span></a>
-<a class="sourceLine" id="cb1-82" data-line-number="82"><span class="co">#&gt; [5,]      Inf      Inf      Inf       Inf   7.058370    2.425846</span></a>
-<a class="sourceLine" id="cb1-83" data-line-number="83"><span class="co">#&gt;             [,7]</span></a>
-<a class="sourceLine" id="cb1-84" data-line-number="84"><span class="co">#&gt; [1,]         Inf</span></a>
-<a class="sourceLine" id="cb1-85" data-line-number="85"><span class="co">#&gt; [2,] 4825.478228</span></a>
-<a class="sourceLine" id="cb1-86" data-line-number="86"><span class="co">#&gt; [3,]   13.219538</span></a>
-<a class="sourceLine" id="cb1-87" data-line-number="87"><span class="co">#&gt; [4,]    4.667476</span></a>
-<a class="sourceLine" id="cb1-88" data-line-number="88"><span class="co">#&gt; [5,]    1.045734</span></a>
-<a class="sourceLine" id="cb1-89" data-line-number="89"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]       [,6]       [,7]</span></a>
-<a class="sourceLine" id="cb1-90" data-line-number="90"><span class="co">#&gt; [1,] 7056.881      Inf      Inf      Inf      Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-91" data-line-number="91"><span class="co">#&gt; [2,]      Inf 178.6286 223.3720 344.0645 893.9640 2330.78733 4839.28299</span></a>
-<a class="sourceLine" id="cb1-92" data-line-number="92"><span class="co">#&gt; [3,]      Inf      Inf 219.7503 214.3412 150.1976   76.00024   27.02430</span></a>
-<a class="sourceLine" id="cb1-93" data-line-number="93"><span class="co">#&gt; [4,]      Inf      Inf      Inf 210.7194 146.5758   71.44446   18.47224</span></a>
-<a class="sourceLine" id="cb1-94" data-line-number="94"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 145.6503   67.82272   14.85050</span></a>
-<a class="sourceLine" id="cb1-95" data-line-number="95"><span class="co">#&gt;             [,8]</span></a>
-<a class="sourceLine" id="cb1-96" data-line-number="96"><span class="co">#&gt; [1,]         Inf</span></a>
-<a class="sourceLine" id="cb1-97" data-line-number="97"><span class="co">#&gt; [2,] 7404.123489</span></a>
-<a class="sourceLine" id="cb1-98" data-line-number="98"><span class="co">#&gt; [3,]   13.756635</span></a>
-<a class="sourceLine" id="cb1-99" data-line-number="99"><span class="co">#&gt; [4,]   10.134893</span></a>
-<a class="sourceLine" id="cb1-100" data-line-number="100"><span class="co">#&gt; [5,]    4.667476</span></a>
-<a class="sourceLine" id="cb1-101" data-line-number="101"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]      [,5]      [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb1-102" data-line-number="102"><span class="co">#&gt; [1,] 4318.885      Inf      Inf      Inf       Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb1-103" data-line-number="103"><span class="co">#&gt; [2,]      Inf 1236.897 1384.188 1303.690 1553.1187 2684.8633 4959.6385</span></a>
-<a class="sourceLine" id="cb1-104" data-line-number="104"><span class="co">#&gt; [3,]      Inf      Inf 1380.566 1173.967  809.3522  430.0762  147.3798</span></a>
-<a class="sourceLine" id="cb1-105" data-line-number="105"><span class="co">#&gt; [4,]      Inf      Inf      Inf 1170.345  805.7305  425.5204  138.8277</span></a>
-<a class="sourceLine" id="cb1-106" data-line-number="106"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf  804.8050  421.8987  135.2060</span></a>
-<a class="sourceLine" id="cb1-107" data-line-number="107"><span class="co">#&gt;            [,8]       [,9]</span></a>
-<a class="sourceLine" id="cb1-108" data-line-number="108"><span class="co">#&gt; [1,]        Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-109" data-line-number="109"><span class="co">#&gt; [2,] 7417.24509 7056.88056</span></a>
-<a class="sourceLine" id="cb1-110" data-line-number="110"><span class="co">#&gt; [3,]   26.87823  178.62863</span></a>
-<a class="sourceLine" id="cb1-111" data-line-number="111"><span class="co">#&gt; [4,]   23.25649   13.75664</span></a>
-<a class="sourceLine" id="cb1-112" data-line-number="112"><span class="co">#&gt; [5,]   17.78907   10.13489</span></a>
-<a class="sourceLine" id="cb1-113" data-line-number="113"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb1-114" data-line-number="114"><span class="co">#&gt; [1,] 3082.905      Inf      Inf      Inf      Inf      Inf       Inf</span></a>
-<a class="sourceLine" id="cb1-115" data-line-number="115"><span class="co">#&gt; [2,]      Inf 3679.203 3727.011 3162.400 2821.955 3386.232 5226.4995</span></a>
-<a class="sourceLine" id="cb1-116" data-line-number="116"><span class="co">#&gt; [3,]      Inf      Inf 3723.389 3032.677 2078.188 1131.445  414.2408</span></a>
-<a class="sourceLine" id="cb1-117" data-line-number="117"><span class="co">#&gt; [4,]      Inf      Inf      Inf 3029.055 2074.567 1126.889  405.6887</span></a>
-<a class="sourceLine" id="cb1-118" data-line-number="118"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 2073.641 1123.267  402.0670</span></a>
-<a class="sourceLine" id="cb1-119" data-line-number="119"><span class="co">#&gt;            [,8]       [,9]      [,10]</span></a>
-<a class="sourceLine" id="cb1-120" data-line-number="120"><span class="co">#&gt; [1,]        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-121" data-line-number="121"><span class="co">#&gt; [2,] 7463.72923 7058.45530 4318.88463</span></a>
-<a class="sourceLine" id="cb1-122" data-line-number="122"><span class="co">#&gt; [3,]   73.36237  180.20337 1236.89744</span></a>
-<a class="sourceLine" id="cb1-123" data-line-number="123"><span class="co">#&gt; [4,]   69.74063   15.33138   26.87823</span></a>
-<a class="sourceLine" id="cb1-124" data-line-number="124"><span class="co">#&gt; [5,]   64.27322   11.70963   13.75664</span></a>
-<a class="sourceLine" id="cb1-125" data-line-number="125"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb1-126" data-line-number="126"><span class="co">#&gt; [1,] 4690.557      Inf      Inf      Inf      Inf      Inf       Inf</span></a>
-<a class="sourceLine" id="cb1-127" data-line-number="127"><span class="co">#&gt; [2,]      Inf 6935.959 6694.838 5451.350 4347.958 4211.230 5533.5129</span></a>
-<a class="sourceLine" id="cb1-128" data-line-number="128"><span class="co">#&gt; [3,]      Inf      Inf 6691.216 5321.627 3604.192 1956.442  721.2543</span></a>
-<a class="sourceLine" id="cb1-129" data-line-number="129"><span class="co">#&gt; [4,]      Inf      Inf      Inf 5318.005 3600.570 1951.887  712.7022</span></a>
-<a class="sourceLine" id="cb1-130" data-line-number="130"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 3599.644 1948.265  709.0805</span></a>
-<a class="sourceLine" id="cb1-131" data-line-number="131"><span class="co">#&gt;           [,8]       [,9]      [,10]      [,11]</span></a>
-<a class="sourceLine" id="cb1-132" data-line-number="132"><span class="co">#&gt; [1,]       Inf        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-133" data-line-number="133"><span class="co">#&gt; [2,] 7516.2068 7060.16373 4318.97264 3082.90475</span></a>
-<a class="sourceLine" id="cb1-134" data-line-number="134"><span class="co">#&gt; [3,]  125.8399  181.91180 1236.98545 2821.95469</span></a>
-<a class="sourceLine" id="cb1-135" data-line-number="135"><span class="co">#&gt; [4,]  122.2182   17.03980   26.96625   73.36237</span></a>
-<a class="sourceLine" id="cb1-136" data-line-number="136"><span class="co">#&gt; [5,]  116.7508   13.41806   13.84465   15.33138</span></a>
-<a class="sourceLine" id="cb1-137" data-line-number="137"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]</span></a>
-<a class="sourceLine" id="cb1-138" data-line-number="138"><span class="co">#&gt; [1,] 9869.331      Inf      Inf      Inf      Inf      Inf      Inf</span></a>
-<a class="sourceLine" id="cb1-139" data-line-number="139"><span class="co">#&gt; [2,]      Inf 11175.46 10458.46 8314.885 6242.657 5240.497 5931.348</span></a>
-<a class="sourceLine" id="cb1-140" data-line-number="140"><span class="co">#&gt; [3,]      Inf      Inf 10454.84 8185.161 5498.891 2985.710 1119.089</span></a>
-<a class="sourceLine" id="cb1-141" data-line-number="141"><span class="co">#&gt; [4,]      Inf      Inf      Inf 8181.539 5495.269 2981.154 1110.537</span></a>
-<a class="sourceLine" id="cb1-142" data-line-number="142"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 5494.344 2977.533 1106.915</span></a>
-<a class="sourceLine" id="cb1-143" data-line-number="143"><span class="co">#&gt;           [,8]       [,9]      [,10]      [,11]     [,12]</span></a>
-<a class="sourceLine" id="cb1-144" data-line-number="144"><span class="co">#&gt; [1,]       Inf        Inf        Inf        Inf       Inf</span></a>
-<a class="sourceLine" id="cb1-145" data-line-number="145"><span class="co">#&gt; [2,] 7595.4135 7066.60905 4321.06485 3084.02904 4690.5565</span></a>
-<a class="sourceLine" id="cb1-146" data-line-number="146"><span class="co">#&gt; [3,]  205.0467  188.35712 1239.07766 2823.07898 3082.9047</span></a>
-<a class="sourceLine" id="cb1-147" data-line-number="147"><span class="co">#&gt; [4,]  201.4249   23.48513   29.05846   74.48666  125.8399</span></a>
-<a class="sourceLine" id="cb1-148" data-line-number="148"><span class="co">#&gt; [5,]  195.9575   19.86338   15.93686   16.45567   17.0398</span></a>
-<a class="sourceLine" id="cb1-149" data-line-number="149"><span class="co">#&gt;      [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]      [,8]</span></a>
-<a class="sourceLine" id="cb1-150" data-line-number="150"><span class="co">#&gt; [1,]    0      Inf      Inf      Inf      Inf      Inf      Inf       Inf</span></a>
-<a class="sourceLine" id="cb1-151" data-line-number="151"><span class="co">#&gt; [2,]  Inf 13072.04 11191.11 6930.932 3972.131 3819.494 6708.756 10488.089</span></a>
-<a class="sourceLine" id="cb1-152" data-line-number="152"><span class="co">#&gt; [3,]  Inf      Inf 11187.48 6801.208 3228.365 1564.707 1896.497  3097.723</span></a>
-<a class="sourceLine" id="cb1-153" data-line-number="153"><span class="co">#&gt; [4,]  Inf      Inf      Inf 6797.587 3224.743 1560.151 1887.945  3094.101</span></a>
-<a class="sourceLine" id="cb1-154" data-line-number="154"><span class="co">#&gt; [5,]  Inf      Inf      Inf      Inf 3223.817 1556.529 1884.323  3088.633</span></a>
-<a class="sourceLine" id="cb1-155" data-line-number="155"><span class="co">#&gt;          [,9]    [,10]     [,11]     [,12]      [,13]</span></a>
-<a class="sourceLine" id="cb1-156" data-line-number="156"><span class="co">#&gt; [1,]      Inf      Inf       Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-157" data-line-number="157"><span class="co">#&gt; [2,] 9959.539 5774.459 3509.7067 4751.3009 9869.33147</span></a>
-<a class="sourceLine" id="cb1-158" data-line-number="158"><span class="co">#&gt; [3,] 3081.287 2692.472 3248.7567 3143.6491 3084.02904</span></a>
-<a class="sourceLine" id="cb1-159" data-line-number="159"><span class="co">#&gt; [4,] 2916.415 1482.453  500.1644  186.5843  188.35712</span></a>
-<a class="sourceLine" id="cb1-160" data-line-number="160"><span class="co">#&gt; [5,] 2912.793 1469.331  442.1334   77.7842   23.48513</span></a>
-<a class="sourceLine" id="cb1-161" data-line-number="161"><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></a>
-<a class="sourceLine" id="cb1-162" data-line-number="162"><span class="co">#&gt;  [1,]    0    0    0    0    0</span></a>
-<a class="sourceLine" id="cb1-163" data-line-number="163"><span class="co">#&gt;  [2,]    0    1    0    0    0</span></a>
-<a class="sourceLine" id="cb1-164" data-line-number="164"><span class="co">#&gt;  [3,]    0    2    2    0    0</span></a>
-<a class="sourceLine" id="cb1-165" data-line-number="165"><span class="co">#&gt;  [4,]    0    2    2    3    0</span></a>
-<a class="sourceLine" id="cb1-166" data-line-number="166"><span class="co">#&gt;  [5,]    0    2    3    3    4</span></a>
-<a class="sourceLine" id="cb1-167" data-line-number="167"><span class="co">#&gt;  [6,]    0    2    4    4    4</span></a>
-<a class="sourceLine" id="cb1-168" data-line-number="168"><span class="co">#&gt;  [7,]    0    2    2    6    6</span></a>
-<a class="sourceLine" id="cb1-169" data-line-number="169"><span class="co">#&gt;  [8,]    0    1    7    7    7</span></a>
-<a class="sourceLine" id="cb1-170" data-line-number="170"><span class="co">#&gt;  [9,]    0    1    7    8    8</span></a>
-<a class="sourceLine" id="cb1-171" data-line-number="171"><span class="co">#&gt; [10,]    0    4    7    8    8</span></a>
-<a class="sourceLine" id="cb1-172" data-line-number="172"><span class="co">#&gt; [11,]    0   10    7    8    8</span></a>
-<a class="sourceLine" id="cb1-173" data-line-number="173"><span class="co">#&gt; [12,]    0   10    8    8    9</span></a>
-<a class="sourceLine" id="cb1-174" data-line-number="174"><span class="co">#&gt; [13,]    0   10    5   11   12</span></a>
-<a class="sourceLine" id="cb1-175" data-line-number="175"><span class="co">#&gt;              [,1]        [,2]         [,3]        [,4]       [,5]</span></a>
-<a class="sourceLine" id="cb1-176" data-line-number="176"><span class="co">#&gt;  [1,]    0.000000         Inf          Inf         Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-177" data-line-number="177"><span class="co">#&gt;  [2,]    3.621742    0.000000          Inf         Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-178" data-line-number="178"><span class="co">#&gt;  [3,]  133.345107    3.621742    0.0000000         Inf        Inf</span></a>
-<a class="sourceLine" id="cb1-179" data-line-number="179"><span class="co">#&gt;  [4,]  748.313709    4.547279    0.9255366   0.0000000        Inf</span></a>
-<a class="sourceLine" id="cb1-180" data-line-number="180"><span class="co">#&gt;  [5,] 2263.264459    8.477366    3.9215948   0.2998527  0.0000000</span></a>
-<a class="sourceLine" id="cb1-181" data-line-number="181"><span class="co">#&gt;  [6,] 4825.478228   13.219538    4.6674760   1.0457339  0.1201973</span></a>
-<a class="sourceLine" id="cb1-182" data-line-number="182"><span class="co">#&gt;  [7,] 7404.123489   13.756635   10.1348930   4.6674760  1.0457339</span></a>
-<a class="sourceLine" id="cb1-183" data-line-number="183"><span class="co">#&gt;  [8,] 7056.880563  178.628628   13.7566351  10.1348930  4.6674760</span></a>
-<a class="sourceLine" id="cb1-184" data-line-number="184"><span class="co">#&gt;  [9,] 4318.884625 1236.897436   26.8782331  13.7566351 10.1348930</span></a>
-<a class="sourceLine" id="cb1-185" data-line-number="185"><span class="co">#&gt; [10,] 3082.904746 2821.954693   73.3623746  15.3313760 11.7096340</span></a>
-<a class="sourceLine" id="cb1-186" data-line-number="186"><span class="co">#&gt; [11,] 4690.556549 3082.904746  125.8399416  17.0398025 13.4180604</span></a>
-<a class="sourceLine" id="cb1-187" data-line-number="187"><span class="co">#&gt; [12,] 9869.331468 3084.029036  188.3571201  23.4851271 15.9368638</span></a>
-<a class="sourceLine" id="cb1-188" data-line-number="188"><span class="co">#&gt; [13,]    0.000000 3509.706729 1564.7069898 186.5843393 23.4851271</span></a>
-<a class="sourceLine" id="cb1-189" data-line-number="189"> <span class="kw">print</span>(a) <span class="co">#indices of months to select for follow-up experiments</span></a>
-<a class="sourceLine" id="cb1-190" data-line-number="190"><span class="co">#&gt; [1]  2  7  8 12</span></a>
-<a class="sourceLine" id="cb1-191" data-line-number="191"> <span class="kw">print</span>(<span class="kw">rownames</span>(CanadianWeather<span class="op">$</span>monthlyTemp)[a]) <span class="co">#month names selected</span></a>
-<a class="sourceLine" id="cb1-192" data-line-number="192"><span class="co">#&gt; [1] &quot;Feb&quot; &quot;Jul&quot; &quot;Aug&quot; &quot;Dec&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-59" data-line-number="59"><span class="co">#&gt;          [,1]    [,2]     [,3]       [,4]</span></a>
+<a class="sourceLine" id="cb1-60" data-line-number="60"><span class="co">#&gt; [1,] 76710128     Inf      Inf        Inf</span></a>
+<a class="sourceLine" id="cb1-61" data-line-number="61"><span class="co">#&gt; [2,]      Inf 2691586 566219.1 12754640.8</span></a>
+<a class="sourceLine" id="cb1-62" data-line-number="62"><span class="co">#&gt; [3,]      Inf     Inf 160832.8   402987.9</span></a>
+<a class="sourceLine" id="cb1-63" data-line-number="63"><span class="co">#&gt; [4,]      Inf     Inf      Inf        0.0</span></a>
+<a class="sourceLine" id="cb1-64" data-line-number="64"><span class="co">#&gt; [5,]      Inf     Inf      Inf        Inf</span></a>
+<a class="sourceLine" id="cb1-65" data-line-number="65"><span class="co">#&gt;           [,1]    [,2]     [,3]         [,4]       [,5]</span></a>
+<a class="sourceLine" id="cb1-66" data-line-number="66"><span class="co">#&gt; [1,] 209951996     Inf      Inf          Inf        Inf</span></a>
+<a class="sourceLine" id="cb1-67" data-line-number="67"><span class="co">#&gt; [2,]       Inf 5204859 698771.0 12761361.222 76710127.9</span></a>
+<a class="sourceLine" id="cb1-68" data-line-number="68"><span class="co">#&gt; [3,]       Inf     Inf 293384.7   409708.318   566219.1</span></a>
+<a class="sourceLine" id="cb1-69" data-line-number="69"><span class="co">#&gt; [4,]       Inf     Inf      Inf     6720.452   160832.8</span></a>
+<a class="sourceLine" id="cb1-70" data-line-number="70"><span class="co">#&gt; [5,]       Inf     Inf      Inf          Inf        0.0</span></a>
+<a class="sourceLine" id="cb1-71" data-line-number="71"><span class="co">#&gt;           [,1]    [,2]     [,3]       [,4]        [,5]         [,6]</span></a>
+<a class="sourceLine" id="cb1-72" data-line-number="72"><span class="co">#&gt; [1,] 382507122     Inf      Inf        Inf         Inf          Inf</span></a>
+<a class="sourceLine" id="cb1-73" data-line-number="73"><span class="co">#&gt; [2,]       Inf 5264874 646543.1 13106225.8 76793763.00 2.099520e+08</span></a>
+<a class="sourceLine" id="cb1-74" data-line-number="74"><span class="co">#&gt; [3,]       Inf     Inf 241156.8   754572.9   649854.16 6.987710e+05</span></a>
+<a class="sourceLine" id="cb1-75" data-line-number="75"><span class="co">#&gt; [4,]       Inf     Inf      Inf   351585.0   244467.88 2.933847e+05</span></a>
+<a class="sourceLine" id="cb1-76" data-line-number="76"><span class="co">#&gt; [5,]       Inf     Inf      Inf        Inf    83635.07 6.720452e+03</span></a>
+<a class="sourceLine" id="cb1-77" data-line-number="77"><span class="co">#&gt;           [,1]    [,2]    [,3]     [,4]     [,5]        [,6]        [,7]</span></a>
+<a class="sourceLine" id="cb1-78" data-line-number="78"><span class="co">#&gt; [1,] 514207138     Inf     Inf      Inf      Inf         Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-79" data-line-number="79"><span class="co">#&gt; [2,]       Inf 4327509 3736712 16528427 78183000 210179365.1 382507122.0</span></a>
+<a class="sourceLine" id="cb1-80" data-line-number="80"><span class="co">#&gt; [3,]       Inf     Inf 3331326  4176774  2039091    926140.2    646543.1</span></a>
+<a class="sourceLine" id="cb1-81" data-line-number="81"><span class="co">#&gt; [4,]       Inf     Inf     Inf  3773786  1633705    520753.9    241156.8</span></a>
+<a class="sourceLine" id="cb1-82" data-line-number="82"><span class="co">#&gt; [5,]       Inf     Inf     Inf      Inf  1472872    234089.7    244467.9</span></a>
+<a class="sourceLine" id="cb1-83" data-line-number="83"><span class="co">#&gt;           [,1]     [,2]     [,3]     [,4]     [,5]      [,6]        [,7]</span></a>
+<a class="sourceLine" id="cb1-84" data-line-number="84"><span class="co">#&gt; [1,] 473815404      Inf      Inf      Inf      Inf       Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-85" data-line-number="85"><span class="co">#&gt; [2,]       Inf 22257196 29448384 37850239 89419317 214180641 383180660.8</span></a>
+<a class="sourceLine" id="cb1-86" data-line-number="86"><span class="co">#&gt; [3,]       Inf      Inf 29042997 25498586 13275408   4927416   1320081.9</span></a>
+<a class="sourceLine" id="cb1-87" data-line-number="87"><span class="co">#&gt; [4,]       Inf      Inf      Inf 25095598 12870022   4522030    914695.6</span></a>
+<a class="sourceLine" id="cb1-88" data-line-number="88"><span class="co">#&gt; [5,]       Inf      Inf      Inf      Inf 12709189   4235366    918006.7</span></a>
+<a class="sourceLine" id="cb1-89" data-line-number="89"><span class="co">#&gt;             [,8]</span></a>
+<a class="sourceLine" id="cb1-90" data-line-number="90"><span class="co">#&gt; [1,]         Inf</span></a>
+<a class="sourceLine" id="cb1-91" data-line-number="91"><span class="co">#&gt; [2,] 514207138.3</span></a>
+<a class="sourceLine" id="cb1-92" data-line-number="92"><span class="co">#&gt; [3,]   3736712.2</span></a>
+<a class="sourceLine" id="cb1-93" data-line-number="93"><span class="co">#&gt; [4,]    646543.1</span></a>
+<a class="sourceLine" id="cb1-94" data-line-number="94"><span class="co">#&gt; [5,]    241156.8</span></a>
+<a class="sourceLine" id="cb1-95" data-line-number="95"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb1-96" data-line-number="96"><span class="co">#&gt; [1,] 301568981       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-97" data-line-number="97"><span class="co">#&gt; [2,]       Inf 113501857 122664213 110684752 132584847 234160346 389372771</span></a>
+<a class="sourceLine" id="cb1-98" data-line-number="98"><span class="co">#&gt; [3,]       Inf       Inf 122258827  98333099  56440938  24907121   7512192</span></a>
+<a class="sourceLine" id="cb1-99" data-line-number="99"><span class="co">#&gt; [4,]       Inf       Inf       Inf  97930111  56035552  24501735   7106806</span></a>
+<a class="sourceLine" id="cb1-100" data-line-number="100"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf  55874719  24215071   7110117</span></a>
+<a class="sourceLine" id="cb1-101" data-line-number="101"><span class="co">#&gt;             [,8]        [,9]</span></a>
+<a class="sourceLine" id="cb1-102" data-line-number="102"><span class="co">#&gt; [1,]         Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-103" data-line-number="103"><span class="co">#&gt; [2,] 514906845.6 473815403.8</span></a>
+<a class="sourceLine" id="cb1-104" data-line-number="104"><span class="co">#&gt; [3,]   4436419.5  22257195.9</span></a>
+<a class="sourceLine" id="cb1-105" data-line-number="105"><span class="co">#&gt; [4,]   1346250.4   1320081.9</span></a>
+<a class="sourceLine" id="cb1-106" data-line-number="106"><span class="co">#&gt; [5,]    940864.1    646543.1</span></a>
+<a class="sourceLine" id="cb1-107" data-line-number="107"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb1-108" data-line-number="108"><span class="co">#&gt; [1,] 227383372       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-109" data-line-number="109"><span class="co">#&gt; [2,]       Inf 295326609 291690105 239624085 211446143 273324356 403428583</span></a>
+<a class="sourceLine" id="cb1-110" data-line-number="110"><span class="co">#&gt; [3,]       Inf       Inf 291284719 227272432 135302234  64071132  21568004</span></a>
+<a class="sourceLine" id="cb1-111" data-line-number="111"><span class="co">#&gt; [4,]       Inf       Inf       Inf 226869444 134896848  63665745  21162618</span></a>
+<a class="sourceLine" id="cb1-112" data-line-number="112"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 134736015  63379081  21165929</span></a>
+<a class="sourceLine" id="cb1-113" data-line-number="113"><span class="co">#&gt;           [,8]        [,9]     [,10]</span></a>
+<a class="sourceLine" id="cb1-114" data-line-number="114"><span class="co">#&gt; [1,]       Inf         Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-115" data-line-number="115"><span class="co">#&gt; [2,] 517438201 473900449.3 301568981</span></a>
+<a class="sourceLine" id="cb1-116" data-line-number="116"><span class="co">#&gt; [3,]   6967775  22342241.4 110684752</span></a>
+<a class="sourceLine" id="cb1-117" data-line-number="117"><span class="co">#&gt; [4,]   3877605   1405127.4   4436419</span></a>
+<a class="sourceLine" id="cb1-118" data-line-number="118"><span class="co">#&gt; [5,]   3472219    731588.5   1320082</span></a>
+<a class="sourceLine" id="cb1-119" data-line-number="119"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb1-120" data-line-number="120"><span class="co">#&gt; [1,] 383414673       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-121" data-line-number="121"><span class="co">#&gt; [2,]       Inf 580963702 546264276 431871174 331410271 335681857 428133989</span></a>
+<a class="sourceLine" id="cb1-122" data-line-number="122"><span class="co">#&gt; [3,]       Inf       Inf 545858890 419519521 255266362 126428632  46273410</span></a>
+<a class="sourceLine" id="cb1-123" data-line-number="123"><span class="co">#&gt; [4,]       Inf       Inf       Inf 419116533 254860975 126023246  45868023</span></a>
+<a class="sourceLine" id="cb1-124" data-line-number="124"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 254700143 125736582  45871334</span></a>
+<a class="sourceLine" id="cb1-125" data-line-number="125"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]</span></a>
+<a class="sourceLine" id="cb1-126" data-line-number="126"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-127" data-line-number="127"><span class="co">#&gt; [2,] 523362361 474572008 301635771 227383372</span></a>
+<a class="sourceLine" id="cb1-128" data-line-number="128"><span class="co">#&gt; [3,]  12891935  23013800 110751541 211446143</span></a>
+<a class="sourceLine" id="cb1-129" data-line-number="129"><span class="co">#&gt; [4,]   9801765   2076686   4503209   6967775</span></a>
+<a class="sourceLine" id="cb1-130" data-line-number="130"><span class="co">#&gt; [5,]   9396379   1403147   1386871   1405127</span></a>
+<a class="sourceLine" id="cb1-131" data-line-number="131"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb1-132" data-line-number="132"><span class="co">#&gt; [1,] 795952515       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-133" data-line-number="133"><span class="co">#&gt; [2,]       Inf 906415161 828832215 641404449 460231248 401394221 453421513</span></a>
+<a class="sourceLine" id="cb1-134" data-line-number="134"><span class="co">#&gt; [3,]       Inf       Inf 828426829 629052796 384087340 192140996  71560934</span></a>
+<a class="sourceLine" id="cb1-135" data-line-number="135"><span class="co">#&gt; [4,]       Inf       Inf       Inf 628649808 383681953 191735610  71155548</span></a>
+<a class="sourceLine" id="cb1-136" data-line-number="136"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 383521121 191448946  71158859</span></a>
+<a class="sourceLine" id="cb1-137" data-line-number="137"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]     [,12]</span></a>
+<a class="sourceLine" id="cb1-138" data-line-number="138"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-139" data-line-number="139"><span class="co">#&gt; [2,] 529088074 475106411 301651203 227393966 383414673</span></a>
+<a class="sourceLine" id="cb1-140" data-line-number="140"><span class="co">#&gt; [3,]  18617648  23548203 110766973 211456737 227383372</span></a>
+<a class="sourceLine" id="cb1-141" data-line-number="141"><span class="co">#&gt; [4,]  15527478   2611089   4518641   6978369  12891935</span></a>
+<a class="sourceLine" id="cb1-142" data-line-number="142"><span class="co">#&gt; [5,]  15122092   1937551   1402303   1415722   2076686</span></a>
+<a class="sourceLine" id="cb1-143" data-line-number="143"><span class="co">#&gt;      [,1]       [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb1-144" data-line-number="144"><span class="co">#&gt; [1,]    0        Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-145" data-line-number="145"><span class="co">#&gt; [2,]  Inf 1058711071 865705906 510500721 276180996 322618020 544844386</span></a>
+<a class="sourceLine" id="cb1-146" data-line-number="146"><span class="co">#&gt; [3,]  Inf        Inf 865300520 498149068 200037087 113364795 162983807</span></a>
+<a class="sourceLine" id="cb1-147" data-line-number="147"><span class="co">#&gt; [4,]  Inf        Inf       Inf 497746081 199631701 112959409 162578421</span></a>
+<a class="sourceLine" id="cb1-148" data-line-number="148"><span class="co">#&gt; [5,]  Inf        Inf       Inf       Inf 199470868 112672745 162581732</span></a>
+<a class="sourceLine" id="cb1-149" data-line-number="149"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]     [,12]     [,13]</span></a>
+<a class="sourceLine" id="cb1-150" data-line-number="150"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb1-151" data-line-number="151"><span class="co">#&gt; [2,] 745849265 682822544 411978766 265186735 387714474 795952515</span></a>
+<a class="sourceLine" id="cb1-152" data-line-number="152"><span class="co">#&gt; [3,] 235378839 231264336 221094537 249249506 231683173 227393966</span></a>
+<a class="sourceLine" id="cb1-153" data-line-number="153"><span class="co">#&gt; [4,] 232288670 210327222 114846204  44771138  17191735  18617648</span></a>
+<a class="sourceLine" id="cb1-154" data-line-number="154"><span class="co">#&gt; [5,] 231883284 209653684 111729867  39208490   6376486   2611089</span></a>
+<a class="sourceLine" id="cb1-155" data-line-number="155"><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></a>
+<a class="sourceLine" id="cb1-156" data-line-number="156"><span class="co">#&gt;  [1,]    0    0    0    0    0</span></a>
+<a class="sourceLine" id="cb1-157" data-line-number="157"><span class="co">#&gt;  [2,]    0    1    0    0    0</span></a>
+<a class="sourceLine" id="cb1-158" data-line-number="158"><span class="co">#&gt;  [3,]    0    1    2    0    0</span></a>
+<a class="sourceLine" id="cb1-159" data-line-number="159"><span class="co">#&gt;  [4,]    0    2    2    3    0</span></a>
+<a class="sourceLine" id="cb1-160" data-line-number="160"><span class="co">#&gt;  [5,]    0    2    2    3    4</span></a>
+<a class="sourceLine" id="cb1-161" data-line-number="161"><span class="co">#&gt;  [6,]    0    2    2    4    5</span></a>
+<a class="sourceLine" id="cb1-162" data-line-number="162"><span class="co">#&gt;  [7,]    0    2    6    6    5</span></a>
+<a class="sourceLine" id="cb1-163" data-line-number="163"><span class="co">#&gt;  [8,]    0    1    6    7    7</span></a>
+<a class="sourceLine" id="cb1-164" data-line-number="164"><span class="co">#&gt;  [9,]    0    3    7    8    8</span></a>
+<a class="sourceLine" id="cb1-165" data-line-number="165"><span class="co">#&gt; [10,]    0    4    7    8    8</span></a>
+<a class="sourceLine" id="cb1-166" data-line-number="166"><span class="co">#&gt; [11,]    0   10    7    8    9</span></a>
+<a class="sourceLine" id="cb1-167" data-line-number="167"><span class="co">#&gt; [12,]    0   10    7    8    9</span></a>
+<a class="sourceLine" id="cb1-168" data-line-number="168"><span class="co">#&gt; [13,]    0   10    5   11   12</span></a>
+<a class="sourceLine" id="cb1-169" data-line-number="169"><span class="co">#&gt;              [,1]        [,2]        [,3]         [,4]        [,5]</span></a>
+<a class="sourceLine" id="cb1-170" data-line-number="170"><span class="co">#&gt;  [1,]         0.0         Inf         Inf          Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-171" data-line-number="171"><span class="co">#&gt;  [2,]    405386.3         0.0         Inf          Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-172" data-line-number="172"><span class="co">#&gt;  [3,]  12754640.8    402987.9         0.0          Inf         Inf</span></a>
+<a class="sourceLine" id="cb1-173" data-line-number="173"><span class="co">#&gt;  [4,]  76710127.9    566219.1    160832.8        0.000         Inf</span></a>
+<a class="sourceLine" id="cb1-174" data-line-number="174"><span class="co">#&gt;  [5,] 209951995.9    698771.0    293384.7     6720.452       0.000</span></a>
+<a class="sourceLine" id="cb1-175" data-line-number="175"><span class="co">#&gt;  [6,] 382507122.0    646543.1    241156.8   244467.877    6720.452</span></a>
+<a class="sourceLine" id="cb1-176" data-line-number="176"><span class="co">#&gt;  [7,] 514207138.3   3736712.2    646543.1   241156.800  234089.687</span></a>
+<a class="sourceLine" id="cb1-177" data-line-number="177"><span class="co">#&gt;  [8,] 473815403.8  22257195.9   1320081.9   646543.082  241156.800</span></a>
+<a class="sourceLine" id="cb1-178" data-line-number="178"><span class="co">#&gt;  [9,] 301568981.4 110684751.7   4436419.5  1320081.921  646543.082</span></a>
+<a class="sourceLine" id="cb1-179" data-line-number="179"><span class="co">#&gt; [10,] 227383372.2 211446142.7   6967774.6  1405127.355  731588.515</span></a>
+<a class="sourceLine" id="cb1-180" data-line-number="180"><span class="co">#&gt; [11,] 383414673.3 227383372.2  12891934.6  2076685.594 1386871.264</span></a>
+<a class="sourceLine" id="cb1-181" data-line-number="181"><span class="co">#&gt; [12,] 795952514.6 227393966.3  18617647.6  2611089.346 1402303.103</span></a>
+<a class="sourceLine" id="cb1-182" data-line-number="182"><span class="co">#&gt; [13,]         0.0 265186735.3 113364795.3 17191735.022 2611089.346</span></a>
+<a class="sourceLine" id="cb1-183" data-line-number="183"> <span class="kw">print</span>(a) <span class="co">#indices of months to select for follow-up experiments</span></a>
+<a class="sourceLine" id="cb1-184" data-line-number="184"><span class="co">#&gt; [1]  2  6  8 12</span></a>
+<a class="sourceLine" id="cb1-185" data-line-number="185"> <span class="kw">print</span>(<span class="kw">rownames</span>(CanadianWeather<span class="op">$</span>monthlyTemp)[a]) <span class="co">#month names selected</span></a>
+<a class="sourceLine" id="cb1-186" data-line-number="186"><span class="co">#&gt; [1] &quot;Feb&quot; &quot;Jun&quot; &quot;Aug&quot; &quot;Dec&quot;</span></a></code></pre></div>
 </div>
 <div id="demo-of-f2" class="section level2">
 <h2>Demo of F2</h2>
@@ -507,7 +501,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(NITPicker)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">mat=CanadianWeather<span class="op">$</span>monthlyTemp <span class="co">#load data - a matrix with 12 rows, representing months (time); and 35 columns, representing cities (experiments)</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"> y=CanadianWeather<span class="op">$</span>monthlyTemp[,<span class="st">&quot;Resolute&quot;</span>]</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">a=<span class="kw">findPathF2</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), y, mat, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">3</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">a=<span class="kw">findPathF2</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), y, mat, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">500</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; lambda =   0.0 </span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; Initializing...</span></a>
@@ -537,145 +531,145 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; [4,]  Inf</span></a>
 <a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; [5,]  Inf</span></a>
 <a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt;          [,1] [,2]</span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; [1,] 6.355158  Inf</span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; [1,] 365301.9  Inf</span></a>
 <a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; [2,]      Inf    0</span></a>
 <a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; [3,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; [4,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; [5,]      Inf  Inf</span></a>
 <a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt;          [,1]     [,2]     [,3]</span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; [1,] 118.4347      Inf      Inf</span></a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; [2,]      Inf 2.027377 6.355158</span></a>
-<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; [3,]      Inf      Inf 0.000000</span></a>
+<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; [1,] 12548826      Inf      Inf</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; [2,]      Inf 431379.5 365301.9</span></a>
+<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; [3,]      Inf      Inf      0.0</span></a>
 <a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt; [4,]      Inf      Inf      Inf</span></a>
 <a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; [5,]      Inf      Inf      Inf</span></a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt;          [,1]     [,2]      [,3]       [,4]</span></a>
-<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; [1,] 231.2051      Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; [2,]      Inf 9.411251 12.264336 118.434700</span></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; [3,]      Inf      Inf  5.909178   2.027377</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt; [4,]      Inf      Inf       Inf   0.000000</span></a>
-<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; [5,]      Inf      Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt;          [,1]    [,2]     [,3]      [,4]       [,5]</span></a>
-<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt; [1,] 423.7435     Inf      Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; [2,]      Inf 196.328 123.5027 137.94313 231.205142</span></a>
-<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; [3,]      Inf     Inf 117.1476  21.53580   9.411251</span></a>
-<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; [4,]      Inf     Inf      Inf  19.50843   2.027377</span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; [5,]      Inf     Inf      Inf       Inf   0.000000</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt;          [,1]     [,2]     [,3]      [,4]        [,5]       [,6]</span></a>
-<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; [1,] 1389.967      Inf      Inf       Inf         Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; [2,]      Inf 519.9946 296.2477 168.00575 231.3226847 423.743512</span></a>
-<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; [3,]      Inf      Inf 289.8925  51.59843   9.5287936 123.502712</span></a>
-<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; [4,]      Inf      Inf      Inf  49.57105   2.1449193   9.411251</span></a>
-<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; [5,]      Inf      Inf      Inf       Inf   0.1175425   2.027377</span></a>
-<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt;        [,1]     [,2]     [,3]      [,4]      [,5]       [,6]        [,7]</span></a>
-<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; [1,] 2114.2      Inf      Inf       Inf       Inf        Inf         Inf</span></a>
-<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; [2,]    Inf 645.3614 343.2179 166.08117 247.52608 428.780044 1389.967041</span></a>
-<a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; [3,]    Inf      Inf 336.8628  49.67385  25.73219 128.539243  168.005755</span></a>
-<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt; [4,]    Inf      Inf      Inf  47.64647  18.34832  14.447782    9.528794</span></a>
-<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt; [5,]    Inf      Inf      Inf       Inf  16.32094   7.063908    2.144919</span></a>
-<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]      [,6]        [,7]</span></a>
-<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt; [1,] 1789.303      Inf      Inf      Inf      Inf       Inf         Inf</span></a>
-<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; [2,]      Inf 555.4289 309.5598 229.3602 373.0257 480.75672 1396.430905</span></a>
-<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; [3,]      Inf      Inf 303.2047 112.9529 151.2318 180.51592  174.469618</span></a>
-<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; [4,]      Inf      Inf      Inf 110.9255 143.8479  66.42446   15.992657</span></a>
-<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 141.8205  59.04059    8.608783</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt;          [,1]    [,2]     [,3]       [,4]</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; [1,] 76245505     Inf      Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; [2,]      Inf 2810254 526415.0 12548826.2</span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; [3,]      Inf     Inf 161113.1   365301.9</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt; [4,]      Inf     Inf      Inf        0.0</span></a>
+<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; [5,]      Inf     Inf      Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt;           [,1]    [,2]     [,3]        [,4]       [,5]</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt; [1,] 208843455     Inf      Inf         Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; [2,]       Inf 5398116 655270.1 12556017.19 76245505.1</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; [3,]       Inf     Inf 289968.2   372492.91   526415.0</span></a>
+<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; [4,]       Inf     Inf      Inf     7191.02   161113.1</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; [5,]       Inf     Inf      Inf         Inf        0.0</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt;           [,1]    [,2]     [,3]       [,4]        [,5]         [,6]</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; [1,] 382591642     Inf      Inf        Inf         Inf          Inf</span></a>
+<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; [2,]       Inf 5570194 599109.8 12883180.7 76322515.06 208843455.47</span></a>
+<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; [3,]       Inf     Inf 233807.9   699656.4   603424.98    655270.12</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; [4,]       Inf     Inf      Inf   334354.5   238123.10    289968.23</span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; [5,]       Inf     Inf      Inf        Inf    77009.99      7191.02</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt;           [,1]    [,2]    [,3]     [,4]     [,5]        [,6]        [,7]</span></a>
+<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt; [1,] 515803981     Inf     Inf      Inf      Inf         Inf         Inf</span></a>
+<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt; [2,]       Inf 4487408 3595760 16234667 77682806 209072841.4 382591641.8</span></a>
+<a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; [3,]       Inf     Inf 3230458  4051143  1963716    884656.0    599109.8</span></a>
+<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt; [4,]       Inf     Inf     Inf  3685841  1598414    519354.1    233807.9</span></a>
+<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt; [5,]       Inf     Inf     Inf      Inf  1437301    236576.9    238123.1</span></a>
+<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt;           [,1]     [,2]     [,3]     [,4]     [,5]      [,6]        [,7]</span></a>
+<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt; [1,] 474631012      Inf      Inf      Inf      Inf       Inf         Inf</span></a>
+<a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; [2,]       Inf 21965495 29297649 37595429 88975900 213148069 383280728.0</span></a>
+<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt; [3,]       Inf      Inf 28932347 25411905 13256810   4959884   1288196.0</span></a>
+<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt; [4,]       Inf      Inf      Inf 25046603 12891508   4594582    922894.1</span></a>
+<a class="sourceLine" id="cb2-75" data-line-number="75"><span class="co">#&gt; [5,]       Inf      Inf      Inf      Inf 12730395   4311805    927209.3</span></a>
 <a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co">#&gt;             [,8]</span></a>
 <a class="sourceLine" id="cb2-77" data-line-number="77"><span class="co">#&gt; [1,]         Inf</span></a>
-<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; [2,] 2114.199861</span></a>
-<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; [3,]  166.081168</span></a>
-<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; [4,]   25.732190</span></a>
-<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; [5,]    9.528794</span></a>
-<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]       [,7]</span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; [1,] 1144.156      Inf      Inf      Inf      Inf      Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; [2,]      Inf 610.4569 454.5879 499.8046 670.7499 613.9047 1423.62736</span></a>
-<a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; [3,]      Inf      Inf 448.2328 383.3972 448.9560 313.6639  201.66608</span></a>
-<a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; [4,]      Inf      Inf      Inf 381.3699 441.5721 199.5724   43.18912</span></a>
-<a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 439.5447 192.1886   35.80524</span></a>
-<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt;            [,8]       [,9]</span></a>
-<a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; [1,]        Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; [2,] 2115.68638 1789.30335</span></a>
-<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt; [3,]  167.56769  229.36024</span></a>
-<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt; [4,]   27.21871  112.95292</span></a>
-<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt; [5,]   11.01532   15.99266</span></a>
-<a class="sourceLine" id="cb2-94" data-line-number="94"><span class="co">#&gt;         [,1]    [,2]     [,3]     [,4]     [,5]     [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt; [1,] 848.888     Inf      Inf      Inf      Inf      Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt; [2,]     Inf 999.461 953.8747 1148.214 1284.524 917.3409 1513.6125</span></a>
-<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt; [3,]     Inf     Inf 947.5196 1031.807 1062.730 617.1001  291.6512</span></a>
-<a class="sourceLine" id="cb2-98" data-line-number="98"><span class="co">#&gt; [4,]     Inf     Inf      Inf 1029.779 1055.346 503.0087  133.1742</span></a>
-<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt; [5,]     Inf     Inf      Inf      Inf 1053.319 495.6248  125.7904</span></a>
-<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt;            [,8]       [,9]      [,10]</span></a>
-<a class="sourceLine" id="cb2-101" data-line-number="101"><span class="co">#&gt; [1,]        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-102" data-line-number="102"><span class="co">#&gt; [2,] 2131.31746 1791.46860 1144.15587</span></a>
-<a class="sourceLine" id="cb2-103" data-line-number="103"><span class="co">#&gt; [3,]  183.19876  231.52549  454.58793</span></a>
-<a class="sourceLine" id="cb2-104" data-line-number="104"><span class="co">#&gt; [4,]   42.84978  115.11817  167.56769</span></a>
-<a class="sourceLine" id="cb2-105" data-line-number="105"><span class="co">#&gt; [5,]   26.64639   18.15791   27.21871</span></a>
-<a class="sourceLine" id="cb2-106" data-line-number="106"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]      [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb2-107" data-line-number="107"><span class="co">#&gt; [1,] 1176.465      Inf      Inf      Inf      Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-108" data-line-number="108"><span class="co">#&gt; [2,]      Inf 1417.835 1386.389 1616.562 1682.371 1078.0452 1539.6483</span></a>
-<a class="sourceLine" id="cb2-109" data-line-number="109"><span class="co">#&gt; [3,]      Inf      Inf 1380.033 1500.155 1460.577  777.8044  317.6871</span></a>
-<a class="sourceLine" id="cb2-110" data-line-number="110"><span class="co">#&gt; [4,]      Inf      Inf      Inf 1498.128 1453.193  663.7129  159.2101</span></a>
-<a class="sourceLine" id="cb2-111" data-line-number="111"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf 1451.166  656.3291  151.8262</span></a>
-<a class="sourceLine" id="cb2-112" data-line-number="112"><span class="co">#&gt;            [,8]       [,9]     [,10]     [,11]</span></a>
-<a class="sourceLine" id="cb2-113" data-line-number="113"><span class="co">#&gt; [1,]        Inf        Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-114" data-line-number="114"><span class="co">#&gt; [2,] 2130.68494 1792.20633 1147.7862 848.88796</span></a>
-<a class="sourceLine" id="cb2-115" data-line-number="115"><span class="co">#&gt; [3,]  182.56625  232.26322  458.2182 917.34093</span></a>
-<a class="sourceLine" id="cb2-116" data-line-number="116"><span class="co">#&gt; [4,]   42.21727  115.85590  171.1980 183.19876</span></a>
-<a class="sourceLine" id="cb2-117" data-line-number="117"><span class="co">#&gt; [5,]   26.01387   18.89564   30.8490  42.84978</span></a>
-<a class="sourceLine" id="cb2-118" data-line-number="118"><span class="co">#&gt;         [,1]   [,2]     [,3]     [,4]     [,5]      [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb2-119" data-line-number="119"><span class="co">#&gt; [1,] 1515.19    Inf      Inf      Inf      Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-120" data-line-number="120"><span class="co">#&gt; [2,]     Inf 1660.6 1532.703 1651.363 1651.141 1021.3012 1537.3541</span></a>
-<a class="sourceLine" id="cb2-121" data-line-number="121"><span class="co">#&gt; [3,]     Inf    Inf 1526.348 1534.955 1429.347  721.0604  315.3928</span></a>
-<a class="sourceLine" id="cb2-122" data-line-number="122"><span class="co">#&gt; [4,]     Inf    Inf      Inf 1532.928 1421.963  606.9689  156.9159</span></a>
-<a class="sourceLine" id="cb2-123" data-line-number="123"><span class="co">#&gt; [5,]     Inf    Inf      Inf      Inf 1419.936  599.5851  149.5320</span></a>
-<a class="sourceLine" id="cb2-124" data-line-number="124"><span class="co">#&gt;            [,8]       [,9]      [,10]     [,11]      [,12]</span></a>
-<a class="sourceLine" id="cb2-125" data-line-number="125"><span class="co">#&gt; [1,]        Inf        Inf        Inf       Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-126" data-line-number="126"><span class="co">#&gt; [2,] 2195.32323 1862.91421 1198.24912 856.41686 1176.46550</span></a>
-<a class="sourceLine" id="cb2-127" data-line-number="127"><span class="co">#&gt; [3,]  247.20454  302.97110  508.68118 924.86982  848.88796</span></a>
-<a class="sourceLine" id="cb2-128" data-line-number="128"><span class="co">#&gt; [4,]  106.85556  186.56378  221.66094 190.72766  182.56625</span></a>
-<a class="sourceLine" id="cb2-129" data-line-number="129"><span class="co">#&gt; [5,]   90.65216   89.60352   81.31196  50.37868   42.21727</span></a>
-<a class="sourceLine" id="cb2-130" data-line-number="130"><span class="co">#&gt;      [,1]     [,2]     [,3]     [,4]     [,5]      [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb2-131" data-line-number="131"><span class="co">#&gt; [1,]    0      Inf      Inf      Inf      Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-132" data-line-number="132"><span class="co">#&gt; [2,]  Inf 1881.577 1798.239 2477.160 2488.608 1031.2624 1835.1374</span></a>
-<a class="sourceLine" id="cb2-133" data-line-number="133"><span class="co">#&gt; [3,]  Inf      Inf 1791.884 2360.753 2266.814  731.0216  613.1761</span></a>
-<a class="sourceLine" id="cb2-134" data-line-number="134"><span class="co">#&gt; [4,]  Inf      Inf      Inf 2358.725 2259.430  616.9301  454.6991</span></a>
-<a class="sourceLine" id="cb2-135" data-line-number="135"><span class="co">#&gt; [5,]  Inf      Inf      Inf      Inf 2257.403  609.5463  447.3152</span></a>
-<a class="sourceLine" id="cb2-136" data-line-number="136"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]      [,12]     [,13]</span></a>
-<a class="sourceLine" id="cb2-137" data-line-number="137"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf        Inf       Inf</span></a>
-<a class="sourceLine" id="cb2-138" data-line-number="138"><span class="co">#&gt; [2,] 2862.6417 2381.4535 1422.4112 890.20539 1187.14978 1515.1903</span></a>
-<a class="sourceLine" id="cb2-139" data-line-number="139"><span class="co">#&gt; [3,]  914.5230  821.5104  732.8432 958.65835  859.57225  856.4169</span></a>
-<a class="sourceLine" id="cb2-140" data-line-number="140"><span class="co">#&gt; [4,]  774.1741  705.1031  445.8230 224.51619  193.25053  247.2045</span></a>
-<a class="sourceLine" id="cb2-141" data-line-number="141"><span class="co">#&gt; [5,]  757.9707  608.1428  305.4740  84.16721   52.90155  106.8556</span></a>
+<a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt; [2,] 515803981.4</span></a>
+<a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; [3,]   3595759.9</span></a>
+<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt; [4,]    599109.8</span></a>
+<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt; [5,]    233807.9</span></a>
+<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt; [1,] 302734286       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; [2,]       Inf 112055517 122176732 110234863 132074679 233183130 389464846</span></a>
+<a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt; [3,]       Inf       Inf 121811430  98051339  56355589  24994945   7472314</span></a>
+<a class="sourceLine" id="cb2-86" data-line-number="86"><span class="co">#&gt; [4,]       Inf       Inf       Inf  97686037  55990287  24629643   7107012</span></a>
+<a class="sourceLine" id="cb2-87" data-line-number="87"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf  55829174  24346866   7111328</span></a>
+<a class="sourceLine" id="cb2-88" data-line-number="88"><span class="co">#&gt;             [,8]        [,9]</span></a>
+<a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt; [1,]         Inf         Inf</span></a>
+<a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; [2,] 516489538.1 474631011.9</span></a>
+<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt; [3,]   4281316.7  21965494.7</span></a>
+<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt; [4,]   1284666.6   1288196.0</span></a>
+<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt; [5,]    919364.7    599109.8</span></a>
+<a class="sourceLine" id="cb2-94" data-line-number="94"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt; [1,] 227484274       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt; [2,]       Inf 292375521 290788428 238942146 210853677 272413913 403500945</span></a>
+<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt; [3,]       Inf       Inf 290423127 226758622 135134587  64225728  21508413</span></a>
+<a class="sourceLine" id="cb2-98" data-line-number="98"><span class="co">#&gt; [4,]       Inf       Inf       Inf 226393320 134769285  63860426  21143111</span></a>
+<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 134608172  63577648  21147427</span></a>
+<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt;           [,8]        [,9]     [,10]</span></a>
+<a class="sourceLine" id="cb2-101" data-line-number="101"><span class="co">#&gt; [1,]       Inf         Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-102" data-line-number="102"><span class="co">#&gt; [2,] 518995041 474717060.6 302734286</span></a>
+<a class="sourceLine" id="cb2-103" data-line-number="103"><span class="co">#&gt; [3,]   6786820  22051543.3 110234863</span></a>
+<a class="sourceLine" id="cb2-104" data-line-number="104"><span class="co">#&gt; [4,]   3790169   1374244.7   4281317</span></a>
+<a class="sourceLine" id="cb2-105" data-line-number="105"><span class="co">#&gt; [5,]   3424868    685158.4   1284667</span></a>
+<a class="sourceLine" id="cb2-106" data-line-number="106"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb2-107" data-line-number="107"><span class="co">#&gt; [1,] 378494828       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-108" data-line-number="108"><span class="co">#&gt; [2,]       Inf 573737294 542688208 429175879 329491420 334082514 427774958</span></a>
+<a class="sourceLine" id="cb2-109" data-line-number="109"><span class="co">#&gt; [3,]       Inf       Inf 542322906 416992355 253772329 125894329  45782426</span></a>
+<a class="sourceLine" id="cb2-110" data-line-number="110"><span class="co">#&gt; [4,]       Inf       Inf       Inf 416627053 253407028 125529027  45417124</span></a>
+<a class="sourceLine" id="cb2-111" data-line-number="111"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 253245915 125246250  45421440</span></a>
+<a class="sourceLine" id="cb2-112" data-line-number="112"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]</span></a>
+<a class="sourceLine" id="cb2-113" data-line-number="113"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-114" data-line-number="114"><span class="co">#&gt; [2,] 524727127 475355309 302794197 227484274</span></a>
+<a class="sourceLine" id="cb2-115" data-line-number="115"><span class="co">#&gt; [3,]  12518906  22689791 110294775 210853677</span></a>
+<a class="sourceLine" id="cb2-116" data-line-number="116"><span class="co">#&gt; [4,]   9522256   2012493   4341228   6786820</span></a>
+<a class="sourceLine" id="cb2-117" data-line-number="117"><span class="co">#&gt; [5,]   9156954   1323406   1344578   1374245</span></a>
+<a class="sourceLine" id="cb2-118" data-line-number="118"><span class="co">#&gt;           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb2-119" data-line-number="119"><span class="co">#&gt; [1,] 790692602       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-120" data-line-number="120"><span class="co">#&gt; [2,]       Inf 900199197 827362190 640554158 459754086 400882270 453598670</span></a>
+<a class="sourceLine" id="cb2-121" data-line-number="121"><span class="co">#&gt; [3,]       Inf       Inf 826996888 628370634 384034996 192694085  71606138</span></a>
+<a class="sourceLine" id="cb2-122" data-line-number="122"><span class="co">#&gt; [4,]       Inf       Inf       Inf 628005332 383669694 192328783  71240836</span></a>
+<a class="sourceLine" id="cb2-123" data-line-number="123"><span class="co">#&gt; [5,]       Inf       Inf       Inf       Inf 383508581 192046006  71245151</span></a>
+<a class="sourceLine" id="cb2-124" data-line-number="124"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]     [,12]</span></a>
+<a class="sourceLine" id="cb2-125" data-line-number="125"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-126" data-line-number="126"><span class="co">#&gt; [2,] 530656498 475960172 302824015 227489772 378494828</span></a>
+<a class="sourceLine" id="cb2-127" data-line-number="127"><span class="co">#&gt; [3,]  18448277  23294655 110324592 210859176 227484274</span></a>
+<a class="sourceLine" id="cb2-128" data-line-number="128"><span class="co">#&gt; [4,]  15451627   2617356   4371046   6792318  12518906</span></a>
+<a class="sourceLine" id="cb2-129" data-line-number="129"><span class="co">#&gt; [5,]  15086325   1928270   1374396   1379743   2012493</span></a>
+<a class="sourceLine" id="cb2-130" data-line-number="130"><span class="co">#&gt;      [,1]       [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb2-131" data-line-number="131"><span class="co">#&gt; [1,]    0        Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-132" data-line-number="132"><span class="co">#&gt; [2,]  Inf 1051784935 868720034 512479240 276302970 320445911 542967197</span></a>
+<a class="sourceLine" id="cb2-133" data-line-number="133"><span class="co">#&gt; [3,]  Inf        Inf 868354732 500295716 200583880 112257726 160974665</span></a>
+<a class="sourceLine" id="cb2-134" data-line-number="134"><span class="co">#&gt; [4,]  Inf        Inf       Inf 499930414 200218578 111892424 160609363</span></a>
+<a class="sourceLine" id="cb2-135" data-line-number="135"><span class="co">#&gt; [5,]  Inf        Inf       Inf       Inf 200057465 111609646 160613678</span></a>
+<a class="sourceLine" id="cb2-136" data-line-number="136"><span class="co">#&gt;           [,8]      [,9]     [,10]     [,11]     [,12]     [,13]</span></a>
+<a class="sourceLine" id="cb2-137" data-line-number="137"><span class="co">#&gt; [1,]       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb2-138" data-line-number="138"><span class="co">#&gt; [2,] 745774319 681665462 412151468 264878522 382862284 790692602</span></a>
+<a class="sourceLine" id="cb2-139" data-line-number="139"><span class="co">#&gt; [3,] 233566097 228999945 219652045 248247925 231851730 227489772</span></a>
+<a class="sourceLine" id="cb2-140" data-line-number="140"><span class="co">#&gt; [4,] 230569447 208322646 113698499  44181067  16886362  18448277</span></a>
+<a class="sourceLine" id="cb2-141" data-line-number="141"><span class="co">#&gt; [5,] 230204145 207633560 110701849  38768492   6379949   2617356</span></a>
 <a class="sourceLine" id="cb2-142" data-line-number="142"><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></a>
 <a class="sourceLine" id="cb2-143" data-line-number="143"><span class="co">#&gt;  [1,]    0    0    0    0    0</span></a>
 <a class="sourceLine" id="cb2-144" data-line-number="144"><span class="co">#&gt;  [2,]    0    1    0    0    0</span></a>
-<a class="sourceLine" id="cb2-145" data-line-number="145"><span class="co">#&gt;  [3,]    0    1    2    0    0</span></a>
-<a class="sourceLine" id="cb2-146" data-line-number="146"><span class="co">#&gt;  [4,]    0    1    3    3    0</span></a>
-<a class="sourceLine" id="cb2-147" data-line-number="147"><span class="co">#&gt;  [5,]    0    2    4    4    4</span></a>
-<a class="sourceLine" id="cb2-148" data-line-number="148"><span class="co">#&gt;  [6,]    0    3    4    4    4</span></a>
-<a class="sourceLine" id="cb2-149" data-line-number="149"><span class="co">#&gt;  [7,]    0    3    4    6    6</span></a>
-<a class="sourceLine" id="cb2-150" data-line-number="150"><span class="co">#&gt;  [8,]    0    3    3    6    6</span></a>
-<a class="sourceLine" id="cb2-151" data-line-number="151"><span class="co">#&gt;  [9,]    0    2    7    7    7</span></a>
-<a class="sourceLine" id="cb2-152" data-line-number="152"><span class="co">#&gt; [10,]    0    5    7    7    8</span></a>
-<a class="sourceLine" id="cb2-153" data-line-number="153"><span class="co">#&gt; [11,]    0   10    7    7    8</span></a>
-<a class="sourceLine" id="cb2-154" data-line-number="154"><span class="co">#&gt; [12,]    0   10    7    7   11</span></a>
-<a class="sourceLine" id="cb2-155" data-line-number="155"><span class="co">#&gt; [13,]    0   10    6   11   11</span></a>
-<a class="sourceLine" id="cb2-156" data-line-number="156"><span class="co">#&gt;              [,1]       [,2]       [,3]       [,4]       [,5]</span></a>
-<a class="sourceLine" id="cb2-157" data-line-number="157"><span class="co">#&gt;  [1,]    0.000000        Inf        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-158" data-line-number="158"><span class="co">#&gt;  [2,]    6.355158   0.000000        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-159" data-line-number="159"><span class="co">#&gt;  [3,]  118.434700   2.027377   0.000000        Inf        Inf</span></a>
-<a class="sourceLine" id="cb2-160" data-line-number="160"><span class="co">#&gt;  [4,]  231.205142   9.411251   2.027377   0.000000        Inf</span></a>
-<a class="sourceLine" id="cb2-161" data-line-number="161"><span class="co">#&gt;  [5,]  423.743512 123.502712   9.411251   2.027377  0.0000000</span></a>
-<a class="sourceLine" id="cb2-162" data-line-number="162"><span class="co">#&gt;  [6,] 1389.967041 168.005755   9.528794   2.144919  0.1175425</span></a>
-<a class="sourceLine" id="cb2-163" data-line-number="163"><span class="co">#&gt;  [7,] 2114.199861 166.081168  25.732190   9.528794  2.1449193</span></a>
-<a class="sourceLine" id="cb2-164" data-line-number="164"><span class="co">#&gt;  [8,] 1789.303348 229.360240 112.952917  15.992657  8.6087826</span></a>
-<a class="sourceLine" id="cb2-165" data-line-number="165"><span class="co">#&gt;  [9,] 1144.155870 454.587928 167.567692  27.218713 11.0153172</span></a>
-<a class="sourceLine" id="cb2-166" data-line-number="166"><span class="co">#&gt; [10,]  848.887963 917.340929 183.198763  42.849784 18.1579119</span></a>
-<a class="sourceLine" id="cb2-167" data-line-number="167"><span class="co">#&gt; [11,] 1176.465499 848.887963 182.566250  42.217271 18.8956367</span></a>
-<a class="sourceLine" id="cb2-168" data-line-number="168"><span class="co">#&gt; [12,] 1515.190253 856.416855 247.204539 106.855560 42.2172710</span></a>
-<a class="sourceLine" id="cb2-169" data-line-number="169"><span class="co">#&gt; [13,]    0.000000 890.205386 613.176076 193.250533 52.9015540</span></a>
+<a class="sourceLine" id="cb2-145" data-line-number="145"><span class="co">#&gt;  [3,]    0    2    2    0    0</span></a>
+<a class="sourceLine" id="cb2-146" data-line-number="146"><span class="co">#&gt;  [4,]    0    2    2    3    0</span></a>
+<a class="sourceLine" id="cb2-147" data-line-number="147"><span class="co">#&gt;  [5,]    0    2    2    3    4</span></a>
+<a class="sourceLine" id="cb2-148" data-line-number="148"><span class="co">#&gt;  [6,]    0    2    2    4    5</span></a>
+<a class="sourceLine" id="cb2-149" data-line-number="149"><span class="co">#&gt;  [7,]    0    2    6    6    5</span></a>
+<a class="sourceLine" id="cb2-150" data-line-number="150"><span class="co">#&gt;  [8,]    0    1    6    7    7</span></a>
+<a class="sourceLine" id="cb2-151" data-line-number="151"><span class="co">#&gt;  [9,]    0    3    7    7    8</span></a>
+<a class="sourceLine" id="cb2-152" data-line-number="152"><span class="co">#&gt; [10,]    0    4    7    8    8</span></a>
+<a class="sourceLine" id="cb2-153" data-line-number="153"><span class="co">#&gt; [11,]    0   10    7    8    8</span></a>
+<a class="sourceLine" id="cb2-154" data-line-number="154"><span class="co">#&gt; [12,]    0   10    7    8    9</span></a>
+<a class="sourceLine" id="cb2-155" data-line-number="155"><span class="co">#&gt; [13,]    0   10    5   11   12</span></a>
+<a class="sourceLine" id="cb2-156" data-line-number="156"><span class="co">#&gt;              [,1]        [,2]        [,3]        [,4]       [,5]</span></a>
+<a class="sourceLine" id="cb2-157" data-line-number="157"><span class="co">#&gt;  [1,]         0.0         Inf         Inf         Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-158" data-line-number="158"><span class="co">#&gt;  [2,]    365301.9         0.0         Inf         Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-159" data-line-number="159"><span class="co">#&gt;  [3,]  12548826.2    365301.9         0.0         Inf        Inf</span></a>
+<a class="sourceLine" id="cb2-160" data-line-number="160"><span class="co">#&gt;  [4,]  76245505.1    526415.0    161113.1        0.00        Inf</span></a>
+<a class="sourceLine" id="cb2-161" data-line-number="161"><span class="co">#&gt;  [5,] 208843455.5    655270.1    289968.2     7191.02       0.00</span></a>
+<a class="sourceLine" id="cb2-162" data-line-number="162"><span class="co">#&gt;  [6,] 382591641.8    599109.8    233807.9   238123.10    7191.02</span></a>
+<a class="sourceLine" id="cb2-163" data-line-number="163"><span class="co">#&gt;  [7,] 515803981.4   3595759.9    599109.8   233807.90  236576.91</span></a>
+<a class="sourceLine" id="cb2-164" data-line-number="164"><span class="co">#&gt;  [8,] 474631011.9  21965494.7   1288196.0   599109.78  233807.90</span></a>
+<a class="sourceLine" id="cb2-165" data-line-number="165"><span class="co">#&gt;  [9,] 302734285.8 110234862.9   4281316.7  1284666.56  599109.78</span></a>
+<a class="sourceLine" id="cb2-166" data-line-number="166"><span class="co">#&gt; [10,] 227484274.2 210853677.4   6786819.5  1374244.65  685158.43</span></a>
+<a class="sourceLine" id="cb2-167" data-line-number="167"><span class="co">#&gt; [11,] 378494827.7 227484274.2  12518905.8  2012492.69 1323406.47</span></a>
+<a class="sourceLine" id="cb2-168" data-line-number="168"><span class="co">#&gt; [12,] 790692602.2 227489772.3  18448276.8  2617356.28 1374395.56</span></a>
+<a class="sourceLine" id="cb2-169" data-line-number="169"><span class="co">#&gt; [13,]         0.0 264878521.6 112257725.6 16886362.06 2617356.28</span></a>
 <a class="sourceLine" id="cb2-170" data-line-number="170"><span class="kw">print</span>(a) <span class="co">#indices of months to select for follow-up experiments</span></a>
-<a class="sourceLine" id="cb2-171" data-line-number="171"><span class="co">#&gt; [1]  1  4  7 11</span></a>
+<a class="sourceLine" id="cb2-171" data-line-number="171"><span class="co">#&gt; [1]  2  6  8 12</span></a>
 <a class="sourceLine" id="cb2-172" data-line-number="172"><span class="kw">print</span>(<span class="kw">rownames</span>(CanadianWeather<span class="op">$</span>monthlyTemp)[a])</a>
-<a class="sourceLine" id="cb2-173" data-line-number="173"><span class="co">#&gt; [1] &quot;Jan&quot; &quot;Apr&quot; &quot;Jul&quot; &quot;Nov&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-173" data-line-number="173"><span class="co">#&gt; [1] &quot;Feb&quot; &quot;Jun&quot; &quot;Aug&quot; &quot;Dec&quot;</span></a></code></pre></div>
 </div>
 <div id="demo-of-f3" class="section level2">
 <h2>Demo of F3</h2>
@@ -692,7 +686,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-8" data-line-number="8"> matContinental=CanadianWeather<span class="op">$</span>monthlyTemp[, <span class="kw">names</span>(continentalCities)]</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"> </a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"> <span class="co">#find a set of points that helps capture the difference between Atlantic and Continental cities, normalised by the variance</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"> a=<span class="kw">findPathF3</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>),  matAtlantic,  matContinental, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">3</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"> a=<span class="kw">findPathF3</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>),  matAtlantic,  matContinental, <span class="dv">4</span>, <span class="dt">numPerts=</span><span class="dv">500</span>) <span class="co">#find a set of points that help predict the shape of the curve</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; lambda =   0.0 </span></a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; Initializing...</span></a>
@@ -721,7 +715,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; lambda =   0.0 </span></a>
 <a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; Initializing...</span></a>
-<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; Computing Karcher mean of 3 functions in SRSF space...</span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; Computing Karcher mean of 500 functions in SRSF space...</span></a>
 <a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; updating step: r=1</span></a>
 <a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; updating step: r=2</span></a>
 <a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt; updating step: r=3</span></a>
@@ -739,164 +733,162 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-55" data-line-number="55"><span class="co">#&gt; updating step: r=15</span></a>
 <a class="sourceLine" id="cb3-56" data-line-number="56"><span class="co">#&gt; updating step: r=16</span></a>
 <a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; updating step: r=17</span></a>
-<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt;      [,1]</span></a>
-<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; [1,]    0</span></a>
-<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; [2,]  Inf</span></a>
-<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; [3,]  Inf</span></a>
-<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; [4,]  Inf</span></a>
-<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; [5,]  Inf</span></a>
-<a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt;            [,1] [,2]</span></a>
-<a class="sourceLine" id="cb3-65" data-line-number="65"><span class="co">#&gt; [1,] 0.01085616  Inf</span></a>
-<a class="sourceLine" id="cb3-66" data-line-number="66"><span class="co">#&gt; [2,]        Inf    0</span></a>
-<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="co">#&gt; [3,]        Inf  Inf</span></a>
-<a class="sourceLine" id="cb3-68" data-line-number="68"><span class="co">#&gt; [4,]        Inf  Inf</span></a>
-<a class="sourceLine" id="cb3-69" data-line-number="69"><span class="co">#&gt; [5,]        Inf  Inf</span></a>
-<a class="sourceLine" id="cb3-70" data-line-number="70"><span class="co">#&gt;           [,1]         [,2]       [,3]</span></a>
-<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="co">#&gt; [1,] 0.0882301          Inf        Inf</span></a>
-<a class="sourceLine" id="cb3-72" data-line-number="72"><span class="co">#&gt; [2,]       Inf 4.398408e-06 0.01085616</span></a>
-<a class="sourceLine" id="cb3-73" data-line-number="73"><span class="co">#&gt; [3,]       Inf          Inf 0.00000000</span></a>
-<a class="sourceLine" id="cb3-74" data-line-number="74"><span class="co">#&gt; [4,]       Inf          Inf        Inf</span></a>
-<a class="sourceLine" id="cb3-75" data-line-number="75"><span class="co">#&gt; [5,]       Inf          Inf        Inf</span></a>
-<a class="sourceLine" id="cb3-76" data-line-number="76"><span class="co">#&gt;           [,1]         [,2]         [,3]         [,4]</span></a>
-<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="co">#&gt; [1,] 0.2954144          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-78" data-line-number="78"><span class="co">#&gt; [2,]       Inf 1.226947e-05 1.085776e-02 8.823010e-02</span></a>
-<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="co">#&gt; [3,]       Inf          Inf 1.607228e-06 4.398408e-06</span></a>
-<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="co">#&gt; [4,]       Inf          Inf          Inf 0.000000e+00</span></a>
-<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="co">#&gt; [5,]       Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-82" data-line-number="82"><span class="co">#&gt;           [,1]         [,2]         [,3]         [,4]         [,5]</span></a>
-<a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt; [1,] 0.6853104          Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt; [2,]       Inf 4.722347e-05 1.087729e-02 8.823336e-02 2.954144e-01</span></a>
-<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt; [3,]       Inf          Inf 2.112856e-05 7.663471e-06 1.226947e-05</span></a>
-<a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt; [4,]       Inf          Inf          Inf 3.265062e-06 1.607228e-06</span></a>
-<a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt; [5,]       Inf          Inf          Inf          Inf 0.000000e+00</span></a>
-<a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt;          [,1]         [,2]         [,3]         [,4]         [,5]</span></a>
-<a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt; [1,] 1.294239          Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-90" data-line-number="90"><span class="co">#&gt; [2,]      Inf 0.0002712687 0.0110306359 8.828748e-02 2.954240e-01</span></a>
-<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; [3,]      Inf          Inf 0.0001744783 6.178628e-05 2.187124e-05</span></a>
-<a class="sourceLine" id="cb3-92" data-line-number="92"><span class="co">#&gt; [4,]      Inf          Inf          Inf 5.738787e-05 1.120900e-05</span></a>
-<a class="sourceLine" id="cb3-93" data-line-number="93"><span class="co">#&gt; [5,]      Inf          Inf          Inf          Inf 9.601768e-06</span></a>
-<a class="sourceLine" id="cb3-94" data-line-number="94"><span class="co">#&gt;              [,6]</span></a>
-<a class="sourceLine" id="cb3-95" data-line-number="95"><span class="co">#&gt; [1,]          Inf</span></a>
-<a class="sourceLine" id="cb3-96" data-line-number="96"><span class="co">#&gt; [2,] 6.853104e-01</span></a>
-<a class="sourceLine" id="cb3-97" data-line-number="97"><span class="co">#&gt; [3,] 4.722347e-05</span></a>
-<a class="sourceLine" id="cb3-98" data-line-number="98"><span class="co">#&gt; [4,] 7.663471e-06</span></a>
-<a class="sourceLine" id="cb3-99" data-line-number="99"><span class="co">#&gt; [5,] 1.607228e-06</span></a>
-<a class="sourceLine" id="cb3-100" data-line-number="100"><span class="co">#&gt;         [,1]        [,2]         [,3]         [,4]         [,5]</span></a>
-<a class="sourceLine" id="cb3-101" data-line-number="101"><span class="co">#&gt; [1,] 2.15068         Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-102" data-line-number="102"><span class="co">#&gt; [2,]     Inf 0.001250506 0.0117628505 0.0886603751 0.2955652136</span></a>
-<a class="sourceLine" id="cb3-103" data-line-number="103"><span class="co">#&gt; [3,]     Inf         Inf 0.0009066929 0.0004346769 0.0001630451</span></a>
-<a class="sourceLine" id="cb3-104" data-line-number="104"><span class="co">#&gt; [4,]     Inf         Inf          Inf 0.0004302785 0.0001523828</span></a>
-<a class="sourceLine" id="cb3-105" data-line-number="105"><span class="co">#&gt; [5,]     Inf         Inf          Inf          Inf 0.0001507756</span></a>
-<a class="sourceLine" id="cb3-106" data-line-number="106"><span class="co">#&gt;              [,6]         [,7]</span></a>
-<a class="sourceLine" id="cb3-107" data-line-number="107"><span class="co">#&gt; [1,]          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-108" data-line-number="108"><span class="co">#&gt; [2,] 6.853353e-01 1.294239e+00</span></a>
-<a class="sourceLine" id="cb3-109" data-line-number="109"><span class="co">#&gt; [3,] 7.220059e-05 2.712687e-04</span></a>
-<a class="sourceLine" id="cb3-110" data-line-number="110"><span class="co">#&gt; [4,] 3.264059e-05 2.187124e-05</span></a>
-<a class="sourceLine" id="cb3-111" data-line-number="111"><span class="co">#&gt; [5,] 2.658435e-05 7.663471e-06</span></a>
-<a class="sourceLine" id="cb3-112" data-line-number="112"><span class="co">#&gt;          [,1]        [,2]        [,3]         [,4]         [,5]</span></a>
-<a class="sourceLine" id="cb3-113" data-line-number="113"><span class="co">#&gt; [1,] 3.369037         Inf         Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-114" data-line-number="114"><span class="co">#&gt; [2,]      Inf 0.002506565 0.012575216 0.0890486652 0.2957251227</span></a>
-<a class="sourceLine" id="cb3-115" data-line-number="115"><span class="co">#&gt; [3,]      Inf         Inf 0.001719058 0.0008229670 0.0003229542</span></a>
-<a class="sourceLine" id="cb3-116" data-line-number="116"><span class="co">#&gt; [4,]      Inf         Inf         Inf 0.0008185686 0.0003122919</span></a>
-<a class="sourceLine" id="cb3-117" data-line-number="117"><span class="co">#&gt; [5,]      Inf         Inf         Inf          Inf 0.0003106847</span></a>
-<a class="sourceLine" id="cb3-118" data-line-number="118"><span class="co">#&gt;              [,6]         [,7]         [,8]</span></a>
-<a class="sourceLine" id="cb3-119" data-line-number="119"><span class="co">#&gt; [1,]          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-120" data-line-number="120"><span class="co">#&gt; [2,] 6.853942e-01 1.294280e+00 2.150680e+00</span></a>
-<a class="sourceLine" id="cb3-121" data-line-number="121"><span class="co">#&gt; [3,] 1.310418e-04 3.125521e-04 1.250506e-03</span></a>
-<a class="sourceLine" id="cb3-122" data-line-number="122"><span class="co">#&gt; [4,] 9.148183e-05 6.315459e-05 7.220059e-05</span></a>
-<a class="sourceLine" id="cb3-123" data-line-number="123"><span class="co">#&gt; [5,] 8.542558e-05 4.894682e-05 2.187124e-05</span></a>
-<a class="sourceLine" id="cb3-124" data-line-number="124"><span class="co">#&gt;          [,1]        [,2]        [,3]        [,4]        [,5]         [,6]</span></a>
-<a class="sourceLine" id="cb3-125" data-line-number="125"><span class="co">#&gt; [1,] 4.920554         Inf         Inf         Inf         Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-126" data-line-number="126"><span class="co">#&gt; [2,]      Inf 0.006144414 0.015137421 0.090566118 0.296536769 0.6857530711</span></a>
-<a class="sourceLine" id="cb3-127" data-line-number="127"><span class="co">#&gt; [3,]      Inf         Inf 0.004281264 0.002340420 0.001134601 0.0004899286</span></a>
-<a class="sourceLine" id="cb3-128" data-line-number="128"><span class="co">#&gt; [4,]      Inf         Inf         Inf 0.002336021 0.001123938 0.0004503686</span></a>
-<a class="sourceLine" id="cb3-129" data-line-number="129"><span class="co">#&gt; [5,]      Inf         Inf         Inf         Inf 0.001122331 0.0004443124</span></a>
-<a class="sourceLine" id="cb3-130" data-line-number="130"><span class="co">#&gt;              [,7]         [,8]         [,9]</span></a>
-<a class="sourceLine" id="cb3-131" data-line-number="131"><span class="co">#&gt; [1,]          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-132" data-line-number="132"><span class="co">#&gt; [2,] 1.2944146353 2.150698e+00 3.369037e+00</span></a>
-<a class="sourceLine" id="cb3-133" data-line-number="133"><span class="co">#&gt; [3,] 0.0004470093 1.268247e-03 2.506565e-03</span></a>
-<a class="sourceLine" id="cb3-134" data-line-number="134"><span class="co">#&gt; [4,] 0.0001976118 8.994168e-05 1.310418e-04</span></a>
-<a class="sourceLine" id="cb3-135" data-line-number="135"><span class="co">#&gt; [5,] 0.0001834041 3.961232e-05 6.315459e-05</span></a>
-<a class="sourceLine" id="cb3-136" data-line-number="136"><span class="co">#&gt;          [,1]       [,2]       [,3]       [,4]        [,5]        [,6]</span></a>
-<a class="sourceLine" id="cb3-137" data-line-number="137"><span class="co">#&gt; [1,] 6.422067        Inf        Inf        Inf         Inf         Inf</span></a>
-<a class="sourceLine" id="cb3-138" data-line-number="138"><span class="co">#&gt; [2,]      Inf 0.02249463 0.02752082 0.09898234 0.301824258 0.688765118</span></a>
-<a class="sourceLine" id="cb3-139" data-line-number="139"><span class="co">#&gt; [3,]      Inf        Inf 0.01666466 0.01075664 0.006422090 0.003501975</span></a>
-<a class="sourceLine" id="cb3-140" data-line-number="140"><span class="co">#&gt; [4,]      Inf        Inf        Inf 0.01075225 0.006411428 0.003462415</span></a>
-<a class="sourceLine" id="cb3-141" data-line-number="141"><span class="co">#&gt; [5,]      Inf        Inf        Inf        Inf 0.006409820 0.003456359</span></a>
-<a class="sourceLine" id="cb3-142" data-line-number="142"><span class="co">#&gt;             [,7]         [,8]         [,9]        [,10]</span></a>
-<a class="sourceLine" id="cb3-143" data-line-number="143"><span class="co">#&gt; [1,]         Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-144" data-line-number="144"><span class="co">#&gt; [2,] 1.296066128 2.1515862802 3.3692717542 4.920554e+00</span></a>
-<a class="sourceLine" id="cb3-145" data-line-number="145"><span class="co">#&gt; [3,] 0.002098502 0.0021567557 0.0027416657 6.144414e-03</span></a>
-<a class="sourceLine" id="cb3-146" data-line-number="146"><span class="co">#&gt; [4,] 0.001849105 0.0009784506 0.0003661422 4.470093e-04</span></a>
-<a class="sourceLine" id="cb3-147" data-line-number="147"><span class="co">#&gt; [5,] 0.001834897 0.0009281213 0.0002982550 8.994168e-05</span></a>
-<a class="sourceLine" id="cb3-148" data-line-number="148"><span class="co">#&gt;          [,1]      [,2]       [,3]       [,4]       [,5]       [,6]</span></a>
-<a class="sourceLine" id="cb3-149" data-line-number="149"><span class="co">#&gt; [1,] 7.029903       Inf        Inf        Inf        Inf        Inf</span></a>
-<a class="sourceLine" id="cb3-150" data-line-number="150"><span class="co">#&gt; [2,]      Inf 0.1141843 0.10234348 0.15672151 0.34456938 0.71903299</span></a>
-<a class="sourceLine" id="cb3-151" data-line-number="151"><span class="co">#&gt; [3,]      Inf       Inf 0.09148732 0.06849581 0.04916722 0.03376984</span></a>
-<a class="sourceLine" id="cb3-152" data-line-number="152"><span class="co">#&gt; [4,]      Inf       Inf        Inf 0.06849141 0.04915655 0.03373028</span></a>
-<a class="sourceLine" id="cb3-153" data-line-number="153"><span class="co">#&gt; [5,]      Inf       Inf        Inf        Inf 0.04915495 0.03372423</span></a>
-<a class="sourceLine" id="cb3-154" data-line-number="154"><span class="co">#&gt;            [,7]       [,8]        [,9]       [,10]        [,11]</span></a>
-<a class="sourceLine" id="cb3-155" data-line-number="155"><span class="co">#&gt; [1,]        Inf        Inf         Inf         Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-156" data-line-number="156"><span class="co">#&gt; [2,] 1.31667277 2.16475382 3.375170083 4.921719820 6.4220669647</span></a>
-<a class="sourceLine" id="cb3-157" data-line-number="157"><span class="co">#&gt; [3,] 0.02270514 0.01532429 0.008639994 0.007310587 0.0224946338</span></a>
-<a class="sourceLine" id="cb3-158" data-line-number="158"><span class="co">#&gt; [4,] 0.02245574 0.01414599 0.006264471 0.001613182 0.0020985021</span></a>
-<a class="sourceLine" id="cb3-159" data-line-number="159"><span class="co">#&gt; [5,] 0.02244154 0.01409566 0.006196584 0.001256115 0.0003661422</span></a>
-<a class="sourceLine" id="cb3-160" data-line-number="160"><span class="co">#&gt;          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]</span></a>
-<a class="sourceLine" id="cb3-161" data-line-number="161"><span class="co">#&gt; [1,] 5.329122       Inf       Inf       Inf       Inf       Inf       Inf</span></a>
-<a class="sourceLine" id="cb3-162" data-line-number="162"><span class="co">#&gt; [2,]      Inf 0.6969646 0.5992045 0.5668602 0.6734905 0.9740162 1.5063195</span></a>
-<a class="sourceLine" id="cb3-163" data-line-number="163"><span class="co">#&gt; [3,]      Inf       Inf 0.5883483 0.4786345 0.3780883 0.2887530 0.2123519</span></a>
-<a class="sourceLine" id="cb3-164" data-line-number="164"><span class="co">#&gt; [4,]      Inf       Inf       Inf 0.4786301 0.3780776 0.2887135 0.2121025</span></a>
-<a class="sourceLine" id="cb3-165" data-line-number="165"><span class="co">#&gt; [5,]      Inf       Inf       Inf       Inf 0.3780760 0.2887074 0.2120883</span></a>
-<a class="sourceLine" id="cb3-166" data-line-number="166"><span class="co">#&gt;           [,8]       [,9]      [,10]       [,11]       [,12]</span></a>
-<a class="sourceLine" id="cb3-167" data-line-number="167"><span class="co">#&gt; [1,]       Inf        Inf        Inf         Inf         Inf</span></a>
-<a class="sourceLine" id="cb3-168" data-line-number="168"><span class="co">#&gt; [2,] 2.2971194 3.45151528 4.95321273 6.428421120 7.029902896</span></a>
-<a class="sourceLine" id="cb3-169" data-line-number="169"><span class="co">#&gt; [3,] 0.1476898 0.08498519 0.03880350 0.028848789 0.102343482</span></a>
-<a class="sourceLine" id="cb3-170" data-line-number="170"><span class="co">#&gt; [4,] 0.1465115 0.08260967 0.03310610 0.008452658 0.007310587</span></a>
-<a class="sourceLine" id="cb3-171" data-line-number="171"><span class="co">#&gt; [5,] 0.1464612 0.08254178 0.03274903 0.006720298 0.001613182</span></a>
-<a class="sourceLine" id="cb3-172" data-line-number="172"><span class="co">#&gt;      [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]      [,8]</span></a>
-<a class="sourceLine" id="cb3-173" data-line-number="173"><span class="co">#&gt; [1,]    0      Inf      Inf      Inf      Inf      Inf      Inf       Inf</span></a>
-<a class="sourceLine" id="cb3-174" data-line-number="174"><span class="co">#&gt; [2,]  Inf 11.88921 8.603930 6.010222 4.166324 3.056789 2.629357 2.8110388</span></a>
-<a class="sourceLine" id="cb3-175" data-line-number="175"><span class="co">#&gt; [3,]  Inf      Inf 8.593074 5.921996 3.870922 2.371525 1.335389 0.6616093</span></a>
-<a class="sourceLine" id="cb3-176" data-line-number="176"><span class="co">#&gt; [4,]  Inf      Inf      Inf 5.921992 3.870911 2.371486 1.335140 0.6604310</span></a>
-<a class="sourceLine" id="cb3-177" data-line-number="177"><span class="co">#&gt; [5,]  Inf      Inf      Inf      Inf 3.870909 2.371480 1.335126 0.6603806</span></a>
-<a class="sourceLine" id="cb3-178" data-line-number="178"><span class="co">#&gt;           [,9]      [,10]       [,11]      [,12]       [,13]</span></a>
-<a class="sourceLine" id="cb3-179" data-line-number="179"><span class="co">#&gt; [1,]       Inf        Inf         Inf        Inf         Inf</span></a>
-<a class="sourceLine" id="cb3-180" data-line-number="180"><span class="co">#&gt; [2,] 3.6089103 4.96819152 6.430026738 7.03848773 5.329122207</span></a>
-<a class="sourceLine" id="cb3-181" data-line-number="181"><span class="co">#&gt; [3,] 0.2423802 0.05378229 0.030454407 0.11092832 0.566860224</span></a>
-<a class="sourceLine" id="cb3-182" data-line-number="182"><span class="co">#&gt; [4,] 0.2400047 0.04808488 0.010058276 0.01589542 0.028848789</span></a>
-<a class="sourceLine" id="cb3-183" data-line-number="183"><span class="co">#&gt; [5,] 0.2399368 0.04772782 0.008325916 0.01019802 0.007310587</span></a>
-<a class="sourceLine" id="cb3-184" data-line-number="184"><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></a>
-<a class="sourceLine" id="cb3-185" data-line-number="185"><span class="co">#&gt;  [1,]    0    0    0    0    0</span></a>
-<a class="sourceLine" id="cb3-186" data-line-number="186"><span class="co">#&gt;  [2,]    0    1    0    0    0</span></a>
-<a class="sourceLine" id="cb3-187" data-line-number="187"><span class="co">#&gt;  [3,]    0    1    2    0    0</span></a>
-<a class="sourceLine" id="cb3-188" data-line-number="188"><span class="co">#&gt;  [4,]    0    1    2    3    0</span></a>
-<a class="sourceLine" id="cb3-189" data-line-number="189"><span class="co">#&gt;  [5,]    0    1    3    4    4</span></a>
-<a class="sourceLine" id="cb3-190" data-line-number="190"><span class="co">#&gt;  [6,]    0    1    4    5    5</span></a>
-<a class="sourceLine" id="cb3-191" data-line-number="191"><span class="co">#&gt;  [7,]    0    1    5    6    6</span></a>
-<a class="sourceLine" id="cb3-192" data-line-number="192"><span class="co">#&gt;  [8,]    0    1    5    6    7</span></a>
-<a class="sourceLine" id="cb3-193" data-line-number="193"><span class="co">#&gt;  [9,]    0    1    6    7    7</span></a>
-<a class="sourceLine" id="cb3-194" data-line-number="194"><span class="co">#&gt; [10,]    0    1    6    8    9</span></a>
-<a class="sourceLine" id="cb3-195" data-line-number="195"><span class="co">#&gt; [11,]    0    2    9    9   10</span></a>
-<a class="sourceLine" id="cb3-196" data-line-number="196"><span class="co">#&gt; [12,]    0    3   10   11   11</span></a>
-<a class="sourceLine" id="cb3-197" data-line-number="197"><span class="co">#&gt; [13,]    0    6   10   10   12</span></a>
-<a class="sourceLine" id="cb3-198" data-line-number="198"><span class="co">#&gt;             [,1]         [,2]         [,3]         [,4]         [,5]</span></a>
-<a class="sourceLine" id="cb3-199" data-line-number="199"><span class="co">#&gt;  [1,] 0.00000000          Inf          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-200" data-line-number="200"><span class="co">#&gt;  [2,] 0.01085616 0.000000e+00          Inf          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-201" data-line-number="201"><span class="co">#&gt;  [3,] 0.08823010 4.398408e-06 0.000000e+00          Inf          Inf</span></a>
-<a class="sourceLine" id="cb3-202" data-line-number="202"><span class="co">#&gt;  [4,] 0.29541444 1.226947e-05 1.607228e-06 0.000000e+00          Inf</span></a>
-<a class="sourceLine" id="cb3-203" data-line-number="203"><span class="co">#&gt;  [5,] 0.68531037 4.722347e-05 7.663471e-06 1.607228e-06 0.000000e+00</span></a>
-<a class="sourceLine" id="cb3-204" data-line-number="204"><span class="co">#&gt;  [6,] 1.29423889 2.712687e-04 2.187124e-05 7.663471e-06 1.607228e-06</span></a>
-<a class="sourceLine" id="cb3-205" data-line-number="205"><span class="co">#&gt;  [7,] 2.15068003 1.250506e-03 7.220059e-05 2.187124e-05 7.663471e-06</span></a>
-<a class="sourceLine" id="cb3-206" data-line-number="206"><span class="co">#&gt;  [8,] 3.36903665 2.506565e-03 1.310418e-04 6.315459e-05 2.187124e-05</span></a>
-<a class="sourceLine" id="cb3-207" data-line-number="207"><span class="co">#&gt;  [9,] 4.92055365 6.144414e-03 4.470093e-04 8.994168e-05 3.961232e-05</span></a>
-<a class="sourceLine" id="cb3-208" data-line-number="208"><span class="co">#&gt; [10,] 6.42206696 2.249463e-02 2.098502e-03 3.661422e-04 8.994168e-05</span></a>
-<a class="sourceLine" id="cb3-209" data-line-number="209"><span class="co">#&gt; [11,] 7.02990290 1.023435e-01 7.310587e-03 1.613182e-03 3.661422e-04</span></a>
-<a class="sourceLine" id="cb3-210" data-line-number="210"><span class="co">#&gt; [12,] 5.32912221 5.668602e-01 2.884879e-02 7.310587e-03 1.613182e-03</span></a>
-<a class="sourceLine" id="cb3-211" data-line-number="211"><span class="co">#&gt; [13,] 0.00000000 2.629357e+00 3.045441e-02 1.005828e-02 7.310587e-03</span></a>
-<a class="sourceLine" id="cb3-212" data-line-number="212"> <span class="kw">print</span>(a) <span class="co">#indices of months to select for follow-up experiments</span></a>
-<a class="sourceLine" id="cb3-213" data-line-number="213"><span class="co">#&gt; [1]  1  9 11 12</span></a>
-<a class="sourceLine" id="cb3-214" data-line-number="214"> <span class="kw">print</span>(<span class="kw">rownames</span>(CanadianWeather<span class="op">$</span>monthlyTemp)[a]) <span class="co">#month names selected</span></a>
-<a class="sourceLine" id="cb3-215" data-line-number="215"><span class="co">#&gt; [1] &quot;Jan&quot; &quot;Sep&quot; &quot;Nov&quot; &quot;Dec&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; updating step: r=18</span></a>
+<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; updating step: r=19</span></a>
+<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; updating step: r=20</span></a>
+<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; maximal number of iterations is reached. </span></a>
+<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt;      [,1]</span></a>
+<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; [1,]    0</span></a>
+<a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt; [2,]  Inf</span></a>
+<a class="sourceLine" id="cb3-65" data-line-number="65"><span class="co">#&gt; [3,]  Inf</span></a>
+<a class="sourceLine" id="cb3-66" data-line-number="66"><span class="co">#&gt; [4,]  Inf</span></a>
+<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="co">#&gt; [5,]  Inf</span></a>
+<a class="sourceLine" id="cb3-68" data-line-number="68"><span class="co">#&gt;          [,1] [,2]</span></a>
+<a class="sourceLine" id="cb3-69" data-line-number="69"><span class="co">#&gt; [1,] 224.7612  Inf</span></a>
+<a class="sourceLine" id="cb3-70" data-line-number="70"><span class="co">#&gt; [2,]      Inf    0</span></a>
+<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="co">#&gt; [3,]      Inf  Inf</span></a>
+<a class="sourceLine" id="cb3-72" data-line-number="72"><span class="co">#&gt; [4,]      Inf  Inf</span></a>
+<a class="sourceLine" id="cb3-73" data-line-number="73"><span class="co">#&gt; [5,]      Inf  Inf</span></a>
+<a class="sourceLine" id="cb3-74" data-line-number="74"><span class="co">#&gt;          [,1]     [,2]     [,3]</span></a>
+<a class="sourceLine" id="cb3-75" data-line-number="75"><span class="co">#&gt; [1,] 3384.579      Inf      Inf</span></a>
+<a class="sourceLine" id="cb3-76" data-line-number="76"><span class="co">#&gt; [2,]      Inf 32.39191 224.7612</span></a>
+<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="co">#&gt; [3,]      Inf      Inf   0.0000</span></a>
+<a class="sourceLine" id="cb3-78" data-line-number="78"><span class="co">#&gt; [4,]      Inf      Inf      Inf</span></a>
+<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="co">#&gt; [5,]      Inf      Inf      Inf</span></a>
+<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="co">#&gt;          [,1]     [,2]        [,3]       [,4]</span></a>
+<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="co">#&gt; [1,] 13371.38      Inf         Inf        Inf</span></a>
+<a class="sourceLine" id="cb3-82" data-line-number="82"><span class="co">#&gt; [2,]      Inf 101.9706 225.0703718 3384.57875</span></a>
+<a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt; [3,]      Inf      Inf   0.3091552   32.39191</span></a>
+<a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt; [4,]      Inf      Inf         Inf    0.00000</span></a>
+<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt; [5,]      Inf      Inf         Inf        Inf</span></a>
+<a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt;         [,1]     [,2]       [,3]         [,4]         [,5]</span></a>
+<a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt; [1,] 33895.8      Inf        Inf          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt; [2,]     Inf 192.7369 226.235829 3.384621e+03 1.337138e+04</span></a>
+<a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt; [3,]     Inf      Inf   1.474612 3.243463e+01 1.019706e+02</span></a>
+<a class="sourceLine" id="cb3-90" data-line-number="90"><span class="co">#&gt; [4,]     Inf      Inf        Inf 4.271714e-02 3.091552e-01</span></a>
+<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; [5,]     Inf      Inf        Inf          Inf 0.000000e+00</span></a>
+<a class="sourceLine" id="cb3-92" data-line-number="92"><span class="co">#&gt;         [,1]     [,2]       [,3]        [,4]         [,5]         [,6]</span></a>
+<a class="sourceLine" id="cb3-93" data-line-number="93"><span class="co">#&gt; [1,] 66026.3      Inf        Inf         Inf          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-94" data-line-number="94"><span class="co">#&gt; [2,]     Inf 234.5203 225.999879 3386.246720 1.337231e+04 3.389580e+04</span></a>
+<a class="sourceLine" id="cb3-95" data-line-number="95"><span class="co">#&gt; [3,]     Inf      Inf   1.238662   34.059882 1.029025e+02 1.927369e+02</span></a>
+<a class="sourceLine" id="cb3-96" data-line-number="96"><span class="co">#&gt; [4,]     Inf      Inf        Inf    1.667969 1.241093e+00 1.474612e+00</span></a>
+<a class="sourceLine" id="cb3-97" data-line-number="97"><span class="co">#&gt; [5,]     Inf      Inf        Inf         Inf 9.319376e-01 4.271714e-02</span></a>
+<a class="sourceLine" id="cb3-98" data-line-number="98"><span class="co">#&gt;          [,1]     [,2]      [,3]       [,4]        [,5]         [,6]</span></a>
+<a class="sourceLine" id="cb3-99" data-line-number="99"><span class="co">#&gt; [1,] 105625.6      Inf       Inf        Inf         Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-100" data-line-number="100"><span class="co">#&gt; [2,]      Inf 182.7482 286.03070 3437.07130 13399.53197 33901.418189</span></a>
+<a class="sourceLine" id="cb3-101" data-line-number="101"><span class="co">#&gt; [3,]      Inf      Inf  61.26948   84.88447   130.12528   198.357741</span></a>
+<a class="sourceLine" id="cb3-102" data-line-number="102"><span class="co">#&gt; [4,]      Inf      Inf       Inf   52.49255    28.46387     7.095429</span></a>
+<a class="sourceLine" id="cb3-103" data-line-number="103"><span class="co">#&gt; [5,]      Inf      Inf       Inf        Inf    28.15472     5.663534</span></a>
+<a class="sourceLine" id="cb3-104" data-line-number="104"><span class="co">#&gt;              [,7]</span></a>
+<a class="sourceLine" id="cb3-105" data-line-number="105"><span class="co">#&gt; [1,]          Inf</span></a>
+<a class="sourceLine" id="cb3-106" data-line-number="106"><span class="co">#&gt; [2,] 66026.297408</span></a>
+<a class="sourceLine" id="cb3-107" data-line-number="107"><span class="co">#&gt; [3,]   225.999879</span></a>
+<a class="sourceLine" id="cb3-108" data-line-number="108"><span class="co">#&gt; [4,]     1.238662</span></a>
+<a class="sourceLine" id="cb3-109" data-line-number="109"><span class="co">#&gt; [5,]     1.241093</span></a>
+<a class="sourceLine" id="cb3-110" data-line-number="110"><span class="co">#&gt;          [,1]     [,2]     [,3]      [,4]       [,5]        [,6]</span></a>
+<a class="sourceLine" id="cb3-111" data-line-number="111"><span class="co">#&gt; [1,] 150878.1      Inf      Inf       Inf        Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-112" data-line-number="112"><span class="co">#&gt; [2,]      Inf 248.3435 576.7843 3653.9977 13520.6577 33939.87188</span></a>
+<a class="sourceLine" id="cb3-113" data-line-number="113"><span class="co">#&gt; [3,]      Inf      Inf 352.0230  301.8109   251.2510   236.81143</span></a>
+<a class="sourceLine" id="cb3-114" data-line-number="114"><span class="co">#&gt; [4,]      Inf      Inf      Inf  269.4190   149.5896    45.54912</span></a>
+<a class="sourceLine" id="cb3-115" data-line-number="115"><span class="co">#&gt; [5,]      Inf      Inf      Inf       Inf   149.2804    44.11722</span></a>
+<a class="sourceLine" id="cb3-116" data-line-number="116"><span class="co">#&gt;              [,7]         [,8]</span></a>
+<a class="sourceLine" id="cb3-117" data-line-number="117"><span class="co">#&gt; [1,]          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-118" data-line-number="118"><span class="co">#&gt; [2,] 66029.630219 1.056256e+05</span></a>
+<a class="sourceLine" id="cb3-119" data-line-number="119"><span class="co">#&gt; [3,]   229.332690 1.827482e+02</span></a>
+<a class="sourceLine" id="cb3-120" data-line-number="120"><span class="co">#&gt; [4,]     4.571474 6.126948e+01</span></a>
+<a class="sourceLine" id="cb3-121" data-line-number="121"><span class="co">#&gt; [5,]     4.573904 1.238662e+00</span></a>
+<a class="sourceLine" id="cb3-122" data-line-number="122"><span class="co">#&gt;          [,1]    [,2]     [,3]      [,4]       [,5]       [,6]        [,7]</span></a>
+<a class="sourceLine" id="cb3-123" data-line-number="123"><span class="co">#&gt; [1,] 199354.6     Inf      Inf       Inf        Inf        Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-124" data-line-number="124"><span class="co">#&gt; [2,]      Inf 711.947 1327.404 4201.6505 13842.0409 34068.0084 66056.46035</span></a>
+<a class="sourceLine" id="cb3-125" data-line-number="125"><span class="co">#&gt; [3,]      Inf     Inf 1102.643  849.4636   572.6342   364.9480   256.16282</span></a>
+<a class="sourceLine" id="cb3-126" data-line-number="126"><span class="co">#&gt; [4,]      Inf     Inf      Inf  817.0717   470.9728   173.6857    31.40160</span></a>
+<a class="sourceLine" id="cb3-127" data-line-number="127"><span class="co">#&gt; [5,]      Inf     Inf      Inf       Inf   470.6637   172.2538    31.40403</span></a>
+<a class="sourceLine" id="cb3-128" data-line-number="128"><span class="co">#&gt;              [,8]         [,9]</span></a>
+<a class="sourceLine" id="cb3-129" data-line-number="129"><span class="co">#&gt; [1,]          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-130" data-line-number="130"><span class="co">#&gt; [2,] 1.056283e+05 1.508781e+05</span></a>
+<a class="sourceLine" id="cb3-131" data-line-number="131"><span class="co">#&gt; [3,] 1.854628e+02 2.483435e+02</span></a>
+<a class="sourceLine" id="cb3-132" data-line-number="132"><span class="co">#&gt; [4,] 6.398404e+01 1.827482e+02</span></a>
+<a class="sourceLine" id="cb3-133" data-line-number="133"><span class="co">#&gt; [5,] 3.953226e+00 4.571474e+00</span></a>
+<a class="sourceLine" id="cb3-134" data-line-number="134"><span class="co">#&gt;          [,1]    [,2]     [,3]     [,4]      [,5]       [,6]       [,7]</span></a>
+<a class="sourceLine" id="cb3-135" data-line-number="135"><span class="co">#&gt; [1,] 243212.1     Inf      Inf      Inf       Inf        Inf        Inf</span></a>
+<a class="sourceLine" id="cb3-136" data-line-number="136"><span class="co">#&gt; [2,]      Inf 2196.48 3120.178 5525.334 14674.066 34472.2769 66196.5210</span></a>
+<a class="sourceLine" id="cb3-137" data-line-number="137"><span class="co">#&gt; [3,]      Inf     Inf 2895.417 2173.147  1404.659   769.2165   396.2235</span></a>
+<a class="sourceLine" id="cb3-138" data-line-number="138"><span class="co">#&gt; [4,]      Inf     Inf      Inf 2140.755  1302.998   577.9542   171.4623</span></a>
+<a class="sourceLine" id="cb3-139" data-line-number="139"><span class="co">#&gt; [5,]      Inf     Inf      Inf      Inf  1302.689   576.5223   171.4647</span></a>
+<a class="sourceLine" id="cb3-140" data-line-number="140"><span class="co">#&gt;              [,8]         [,9]       [,10]</span></a>
+<a class="sourceLine" id="cb3-141" data-line-number="141"><span class="co">#&gt; [1,]          Inf          Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-142" data-line-number="142"><span class="co">#&gt; [2,] 105666.73651 150883.84613 199354.5620</span></a>
+<a class="sourceLine" id="cb3-143" data-line-number="143"><span class="co">#&gt; [3,]    223.93149    254.13433    711.9470</span></a>
+<a class="sourceLine" id="cb3-144" data-line-number="144"><span class="co">#&gt; [4,]    102.45277    188.53900    185.4628</span></a>
+<a class="sourceLine" id="cb3-145" data-line-number="145"><span class="co">#&gt; [5,]     42.42196     10.36228     31.4016</span></a>
+<a class="sourceLine" id="cb3-146" data-line-number="146"><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]      [,5]      [,6]       [,7]</span></a>
+<a class="sourceLine" id="cb3-147" data-line-number="147"><span class="co">#&gt; [1,] 269467.5      Inf      Inf      Inf       Inf       Inf        Inf</span></a>
+<a class="sourceLine" id="cb3-148" data-line-number="148"><span class="co">#&gt; [2,]      Inf 6355.351 7467.094 8822.732 16902.479 35745.660 66800.6827</span></a>
+<a class="sourceLine" id="cb3-149" data-line-number="149"><span class="co">#&gt; [3,]      Inf      Inf 7242.333 5470.546  3633.072  2042.600  1000.3851</span></a>
+<a class="sourceLine" id="cb3-150" data-line-number="150"><span class="co">#&gt; [4,]      Inf      Inf      Inf 5438.154  3531.410  1851.337   775.6239</span></a>
+<a class="sourceLine" id="cb3-151" data-line-number="151"><span class="co">#&gt; [5,]      Inf      Inf      Inf      Inf  3531.101  1849.905   775.6263</span></a>
+<a class="sourceLine" id="cb3-152" data-line-number="152"><span class="co">#&gt;             [,8]         [,9]        [,10]       [,11]</span></a>
+<a class="sourceLine" id="cb3-153" data-line-number="153"><span class="co">#&gt; [1,]         Inf          Inf          Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-154" data-line-number="154"><span class="co">#&gt; [2,] 105924.9984 150969.41830 199367.74310 243212.0976</span></a>
+<a class="sourceLine" id="cb3-155" data-line-number="155"><span class="co">#&gt; [3,]    482.1933    339.70651    725.12815   2196.4796</span></a>
+<a class="sourceLine" id="cb3-156" data-line-number="156"><span class="co">#&gt; [4,]    360.7146    274.11117    198.64390    223.9315</span></a>
+<a class="sourceLine" id="cb3-157" data-line-number="157"><span class="co">#&gt; [5,]    300.6838     95.93445     44.58274    102.4528</span></a>
+<a class="sourceLine" id="cb3-158" data-line-number="158"><span class="co">#&gt;          [,1]    [,2]     [,3]     [,4]     [,5]      [,6]      [,7]</span></a>
+<a class="sourceLine" id="cb3-159" data-line-number="159"><span class="co">#&gt; [1,] 236877.2     Inf      Inf      Inf      Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb3-160" data-line-number="160"><span class="co">#&gt; [2,]      Inf 22085.5 22552.23 20797.49 25740.71 41674.652 70426.397</span></a>
+<a class="sourceLine" id="cb3-161" data-line-number="161"><span class="co">#&gt; [3,]      Inf     Inf 22327.47 17445.30 12471.30  7971.592  4626.099</span></a>
+<a class="sourceLine" id="cb3-162" data-line-number="162"><span class="co">#&gt; [4,]      Inf     Inf      Inf 17412.91 12369.64  7780.329  4401.338</span></a>
+<a class="sourceLine" id="cb3-163" data-line-number="163"><span class="co">#&gt; [5,]      Inf     Inf      Inf      Inf 12369.33  7778.898  4401.340</span></a>
+<a class="sourceLine" id="cb3-164" data-line-number="164"><span class="co">#&gt;            [,8]       [,9]       [,10]       [,11]       [,12]</span></a>
+<a class="sourceLine" id="cb3-165" data-line-number="165"><span class="co">#&gt; [1,]        Inf        Inf         Inf         Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-166" data-line-number="166"><span class="co">#&gt; [2,] 108030.098 152051.842 199791.6326 243302.4314 269467.4577</span></a>
+<a class="sourceLine" id="cb3-167" data-line-number="167"><span class="co">#&gt; [3,]   2587.293   1422.130   1149.0177   2286.8135   6355.3509</span></a>
+<a class="sourceLine" id="cb3-168" data-line-number="168"><span class="co">#&gt; [4,]   2465.814   1356.534    622.5334    314.2653    339.7065</span></a>
+<a class="sourceLine" id="cb3-169" data-line-number="169"><span class="co">#&gt; [5,]   2405.783   1178.358    468.4723    192.7866    198.6439</span></a>
+<a class="sourceLine" id="cb3-170" data-line-number="170"><span class="co">#&gt;      [,1]   [,2]     [,3]     [,4]     [,5]      [,6]      [,7]      [,8]</span></a>
+<a class="sourceLine" id="cb3-171" data-line-number="171"><span class="co">#&gt; [1,]    0    Inf      Inf      Inf      Inf       Inf       Inf       Inf</span></a>
+<a class="sourceLine" id="cb3-172" data-line-number="172"><span class="co">#&gt; [2,]  Inf 484464 386310.7 264377.3 175135.5 122961.28 108937.46 123970.09</span></a>
+<a class="sourceLine" id="cb3-173" data-line-number="173"><span class="co">#&gt; [3,]  Inf    Inf 386086.0 261025.1 161866.0  89258.22  43137.16  18527.29</span></a>
+<a class="sourceLine" id="cb3-174" data-line-number="174"><span class="co">#&gt; [4,]  Inf    Inf      Inf 260992.7 161764.4  89066.96  42912.40  18405.81</span></a>
+<a class="sourceLine" id="cb3-175" data-line-number="175"><span class="co">#&gt; [5,]  Inf    Inf      Inf      Inf 161764.1  89065.53  42912.40  18345.78</span></a>
+<a class="sourceLine" id="cb3-176" data-line-number="176"><span class="co">#&gt;            [,9]      [,10]       [,11]       [,12]       [,13]</span></a>
+<a class="sourceLine" id="cb3-177" data-line-number="177"><span class="co">#&gt; [1,]        Inf        Inf         Inf         Inf         Inf</span></a>
+<a class="sourceLine" id="cb3-178" data-line-number="178"><span class="co">#&gt; [2,] 157106.918 200623.769 243276.1628 269523.5473 236877.2431</span></a>
+<a class="sourceLine" id="cb3-179" data-line-number="179"><span class="co">#&gt; [3,]   6477.206   1981.154   2260.5448   6411.4405  20797.4873</span></a>
+<a class="sourceLine" id="cb3-180" data-line-number="180"><span class="co">#&gt; [4,]   6411.611   1454.670    287.9967    395.7961   1149.0177</span></a>
+<a class="sourceLine" id="cb3-181" data-line-number="181"><span class="co">#&gt; [5,]   6233.434   1300.609    166.5180    254.7335    314.2653</span></a>
+<a class="sourceLine" id="cb3-182" data-line-number="182"><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></a>
+<a class="sourceLine" id="cb3-183" data-line-number="183"><span class="co">#&gt;  [1,]    0    0    0    0    0</span></a>
+<a class="sourceLine" id="cb3-184" data-line-number="184"><span class="co">#&gt;  [2,]    0    1    0    0    0</span></a>
+<a class="sourceLine" id="cb3-185" data-line-number="185"><span class="co">#&gt;  [3,]    0    1    2    0    0</span></a>
+<a class="sourceLine" id="cb3-186" data-line-number="186"><span class="co">#&gt;  [4,]    0    1    2    3    0</span></a>
+<a class="sourceLine" id="cb3-187" data-line-number="187"><span class="co">#&gt;  [5,]    0    1    2    3    4</span></a>
+<a class="sourceLine" id="cb3-188" data-line-number="188"><span class="co">#&gt;  [6,]    0    2    2    4    5</span></a>
+<a class="sourceLine" id="cb3-189" data-line-number="189"><span class="co">#&gt;  [7,]    0    1    2    6    6</span></a>
+<a class="sourceLine" id="cb3-190" data-line-number="190"><span class="co">#&gt;  [8,]    0    1    7    6    7</span></a>
+<a class="sourceLine" id="cb3-191" data-line-number="191"><span class="co">#&gt;  [9,]    0    1    7    6    7</span></a>
+<a class="sourceLine" id="cb3-192" data-line-number="192"><span class="co">#&gt; [10,]    0    1    7    7    8</span></a>
+<a class="sourceLine" id="cb3-193" data-line-number="193"><span class="co">#&gt; [11,]    0    1    8    9    9</span></a>
+<a class="sourceLine" id="cb3-194" data-line-number="194"><span class="co">#&gt; [12,]    0    3    9   10   10</span></a>
+<a class="sourceLine" id="cb3-195" data-line-number="195"><span class="co">#&gt; [13,]    0    6    9   10   10</span></a>
+<a class="sourceLine" id="cb3-196" data-line-number="196"><span class="co">#&gt;              [,1]         [,2]         [,3]         [,4]         [,5]</span></a>
+<a class="sourceLine" id="cb3-197" data-line-number="197"><span class="co">#&gt;  [1,]      0.0000          Inf          Inf          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-198" data-line-number="198"><span class="co">#&gt;  [2,]    224.7612      0.00000          Inf          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-199" data-line-number="199"><span class="co">#&gt;  [3,]   3384.5788     32.39191    0.0000000          Inf          Inf</span></a>
+<a class="sourceLine" id="cb3-200" data-line-number="200"><span class="co">#&gt;  [4,]  13371.3773    101.97057    0.3091552   0.00000000          Inf</span></a>
+<a class="sourceLine" id="cb3-201" data-line-number="201"><span class="co">#&gt;  [5,]  33895.7974    192.73692    1.4746119   0.04271714   0.00000000</span></a>
+<a class="sourceLine" id="cb3-202" data-line-number="202"><span class="co">#&gt;  [6,]  66026.2974    225.99988    1.2386624   1.24109283   0.04271714</span></a>
+<a class="sourceLine" id="cb3-203" data-line-number="203"><span class="co">#&gt;  [7,] 105625.5532    182.74819   61.2694805   1.23866236   1.24109283</span></a>
+<a class="sourceLine" id="cb3-204" data-line-number="204"><span class="co">#&gt;  [8,] 150878.0553    248.34353  182.7481929   4.57147379   1.23866236</span></a>
+<a class="sourceLine" id="cb3-205" data-line-number="205"><span class="co">#&gt;  [9,] 199354.5620    711.94701  185.4627562  31.40160152   3.95322559</span></a>
+<a class="sourceLine" id="cb3-206" data-line-number="206"><span class="co">#&gt; [10,] 243212.0976   2196.47963  223.9314864 102.45277395  10.36227636</span></a>
+<a class="sourceLine" id="cb3-207" data-line-number="207"><span class="co">#&gt; [11,] 269467.4577   6355.35088  339.7065087 198.64389934  44.58274469</span></a>
+<a class="sourceLine" id="cb3-208" data-line-number="208"><span class="co">#&gt; [12,] 236877.2431  20797.48733 1149.0176650 314.26533920 192.78662674</span></a>
+<a class="sourceLine" id="cb3-209" data-line-number="209"><span class="co">#&gt; [13,]      0.0000 108937.45803 1981.1542206 287.99667069 166.51795823</span></a>
+<a class="sourceLine" id="cb3-210" data-line-number="210"> <span class="kw">print</span>(a) <span class="co">#indices of months to select for follow-up experiments</span></a>
+<a class="sourceLine" id="cb3-211" data-line-number="211"><span class="co">#&gt; [1]  1  2  7 10</span></a>
+<a class="sourceLine" id="cb3-212" data-line-number="212"> <span class="kw">print</span>(<span class="kw">rownames</span>(CanadianWeather<span class="op">$</span>monthlyTemp)[a]) <span class="co">#month names selected</span></a>
+<a class="sourceLine" id="cb3-213" data-line-number="213"><span class="co">#&gt; [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Jul&quot; &quot;Oct&quot;</span></a></code></pre></div>
 </div>
 
 

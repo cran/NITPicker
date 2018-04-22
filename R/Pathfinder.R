@@ -87,7 +87,7 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' @param iter A positive integer, representing the maximum number of iterations employed during time warping (see time_warping in fdasrvf library)
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
-#'
+#' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples  
 #' #load data:
@@ -101,8 +101,8 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' 
 #' 
 #' 
-findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000){
-    findPathF2(tp, rep(0, length(tp)), training, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts)
+findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
+    findPathF2(tp, rep(0, length(tp)), training, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts, fast=fast)
 }
 
 #' Find best subset of points for follow-up experiments, using F3 metric
@@ -118,7 +118,7 @@ findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T
 #' @param iter A positive integer, representing the maximum number of iterations employed during time warping (see time_warping in fdasrvf library)
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
-#'
+#' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' 
 #' @examples  
@@ -139,7 +139,7 @@ findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T
 #' \donttest{print(a) #indices of months to select for follow-up experiments}
 #' \donttest{print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected}
 #' 
-findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000){
+findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
     #generate lots of perturbations from training set 1 and 2
     generated1=generatePerturbations(training1, tp, iterations=iter, spline=spline, knots=knots, numPert=numPerts)
     generated2=generatePerturbations(training2, tp, iterations=iter, spline=spline, knots=knots, numPert=numPerts)
@@ -152,7 +152,7 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
     })
    
     #plug into findPathF2
-    findPathF2(tp, rep(0, length(tp)), vals, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts)
+    findPathF2(tp, rep(0, length(tp)), vals, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts, fast=fast)
 }
 
 
@@ -170,7 +170,7 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' @param iter A positive integer, representing the maximum number of iterations employed during time warping (see time_warping in fdasrvf library)
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
-#'
+#' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples 
 #' #load data:
@@ -184,7 +184,7 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' \donttest{print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected}
 #' 
 #' 
-findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000){
+findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
     perts=NA
     w=NA
     
@@ -215,7 +215,13 @@ findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, res
     #in this case, training and training2 can just be set to the new set of perturbations
         w=training
     }
-
+    if(fast==T){
+    
+    w=apply(w, 1, function(i){sum(i)})
+   
+    w=as.matrix(w)
+   
+    }
      min_score=matrix(0, nrow=1+length(tp), ncol=numSubSamples+1)
      min_link=matrix(0, nrow=1+length(tp), ncol=numSubSamples+1)
 
