@@ -80,7 +80,7 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' findPathF1 finds the best subset of points to sample from a time course (or spatial axis, along a single axis), based on a set of example curves. Specifically, it finds subsets of points that estimate the shape of the curve effectively. 
 #'
 #' @param tp A numerical vector of time points (or spatial coordinates along a single axis)
-#' @param training this is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements.  
+#' @param training this is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements. (If \code{mult==TRUE}, then this is instead a list of training matrices)
 #' @param numSubSamples integer that represents the number of time points that will be subsampled
 #' @param spline A positive integer representing the spline used to interpolate between knots when generating perturbations.  Note that this does NOT designate the spline used when calculating the L2-error.
 #' @param resampleTraining A boolean designating whether the exact training data should be used (False) or whether a probability distribution of curves should be generated and training curves resampled (True).
@@ -88,6 +88,7 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
 #' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
+#' @param mult is a boolean.  If mult is true, then training will be a list of training matrices.  This will be the case if there are multiple genes to consider at the same time.  Training sets will be normalised by the size of the L2-error. 
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples  
 #' #load data:
@@ -101,8 +102,8 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' 
 #' 
 #' 
-findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
-    findPathF2(tp, rep(0, length(tp)), training, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts, fast=fast)
+findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F){
+    findPathF2(tp, rep(0, length(tp)), training, numSubSamples, spline=spline, resampleTraining=resampleTraining, iter=iter, knots=knots, numPerts=numPerts, fast=fast, mult=mult)
 }
 
 #' Find best subset of points for follow-up experiments, using F3 metric
@@ -139,7 +140,7 @@ findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T
 #' \donttest{print(a) #indices of months to select for follow-up experiments}
 #' \donttest{print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected}
 #' 
-findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
+findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resampleTraining=F, iter=20, knots=100, numPerts=1000, fast=T){
     #generate lots of perturbations from training set 1 and 2
     generated1=generatePerturbations(training1, tp, iterations=iter, spline=spline, knots=knots, numPert=numPerts)
     generated2=generatePerturbations(training2, tp, iterations=iter, spline=spline, knots=knots, numPert=numPerts)
@@ -148,11 +149,13 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
     diff=generated1$ft-generated2$ft
     variances=apply(diff, 1, function(i){var(i)})
     vals=apply(diff, 2, function(i){
-        (i*i)/variances
+        approx(generated1$time, i/sqrt(variances), xout=tp)$y
     })
    
+ 
+    
     #plug into findPathF2
-    findPathF2(tp, rep(0, length(tp)), vals, numSubSamples, multiple=F, spline, resampleTraining, iter, knots, numPerts, fast=fast)
+    findPathF2(tp, rep(0, length(tp)), vals, numSubSamples, spline, resampleTraining, iter, knots, numPerts, fast=fast)
 }
 
 
@@ -161,16 +164,16 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' findPathF2 finds the best subset of points to sample from a time course (or spatial axis, along a single axis), based on a set of example curves. Specifically, it compares between a control curve and a set of experimental curves. 
 #'
 #' @param tp A numerical vector of time points (or spatial coordinates along a single axis)
-#' @param y A numerical vector of measurements (of the control)-- this can be set to \code{rep(0, length(tp))} for calculating the shape of the curves only
-#' @param training Unless multiple is true, this is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements.  If multiple is true, this is a list of numerical matrices, each representing a different class of curves (for instance, different genes).
+#' @param y A numerical vector of measurements (of the control).  If \code{mult==TRUE}, then this will be a matrix, where each column would be the y that corresponds with each training matrix.  
+#' @param training This is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements.   (If \code{mult==TRUE}, then this is instead a list of training matrices).
 #' @param numSubSamples integer that represents the number of time points that will be subsampled
-#' @param multiple A boolean that designates whether training is a matrix or a list of matrices
 #' @param spline A positive integer representing the spline used to interpolate between knots when generating perturbations.  Note that this does NOT designate the spline used when calculating the L2-error.
 #' @param resampleTraining A boolean designating whether the exact training data should be used (False) or whether a probability distribution of curves should be generated and training curves resampled (True).
 #' @param iter A positive integer, representing the maximum number of iterations employed during time warping (see time_warping in fdasrvf library)
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
 #' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
+#' @param mult is a boolean, which will determine whether multiple genes are considered at once.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples 
 #' #load data:
@@ -184,42 +187,65 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' \donttest{print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected}
 #' 
 #' 
-findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T){
+findPathF2 <- function(tp, y, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F){
+    
     perts=NA
     w=NA
     
-    #Usually you would want to use the fdasrvf package to generate new pdf from the training set and sample curves from that
-    if(resampleTraining){
+    if(mult){
         
-    #if there are multiple genes, then the procedure must take place on each gene, trained separately
-    if(multiple){
-        w=lapply(c(1:length(training)), function(index){
+        #then training is a list of training matrices
+        training=sapply(c(1:length(training)), function(index){
+            
+        #for each of these, generate a set of perturbations
             perts=generatePerturbations(training[[index]], tp, iterations=iter, spline=1, knots=knots, numPert=numPerts)
             a=apply(perts$ft, 2, function(i){
                 deBoorWrapper(tp, perts$time, i, spline)
             })
-
-            a/sum(a)
+        #calculate the sum of the area under each of these curves
+            aSize=sum(sapply(c(1:numPerts), function(i){
+                L2(tp, y[,index], a[,i], min(tp), max(tp), index=c(1, length(tp)))
+                
+            }))/numPerts
+        #divide by the sum
+            
+            aAdj=sapply(c(1:numPerts), function(i){
+                (a[,i]-y[,index])/aSize
+                
+            })
+        #add up the curves 
+            apply(aAdj, 1, function(i){sum(i)})
+           
         })
-
-    }else{
+        
+        y=rep(0, length(tp))
+    }
+    
+    
+    #Usually you would want to use the fdasrvf package to generate new pdf from the training set and sample curves from that
+    if(resampleTraining){
+        
+    
     perts=generatePerturbations(training, tp, iterations=iter, spline=spline, knots=knots, numPert=numPerts)
 
     w=apply(perts$ft, 2, function(i){
         deBoorWrapper(tp, perts$time, i, spline)
     })
 
-    }
+    
     }else{
     #Sometimes a different strategy might be used to sample example curves-- 
     #in this case, training and training2 can just be set to the new set of perturbations
         w=training
     }
-    if(fast==T){
+    if(fast){
     
-    w=apply(w, 1, function(i){sum(i)})
-   
-    w=as.matrix(w)
+        w=as.matrix(sapply(c(1:length(tp)), function(i){
+           sum((w[i,]-y[i]))
+        }))
+        print(dim(w))
+        y=rep(0, length(y))
+ 
    
     }
      min_score=matrix(0, nrow=1+length(tp), ncol=numSubSamples+1)
@@ -230,7 +256,7 @@ findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, res
          temp=sapply(c(0:(j-1)), function(i){
              sapply(c(1:(1+numSubSamples)), function(edge){
                  if(edge>(i+1)){Inf}else{
-                 optimisationMatrixValue(i, j, edge, min_score, min_link, tp, y, w, multipleGenes=multiple)
+                 optimisationMatrixValue(i, j, edge, min_score, min_link, tp, y, w, multipleGenes=mult)
                  }})
          })
 
@@ -262,7 +288,11 @@ findPathF2 <- function(tp, y, training, numSubSamples, multiple=F, spline=1, res
 #internal function for cal
 scoreF1 <- function(tp, y, w,  start, stop, index, numSubdivisions=500){
      sum(apply(w, 2, function(i){
-        integrate(F1, start, stop, tp=tp, g=y, w=i, index=index, subdivisions=numSubdivisions)$value
+         tp=c(tp[1], tp, tp[length(tp)])
+         y=c(y[index[1]], y, y[index[length(index)]])
+         i=c(i[index[1]], i, i[index[length(index)]])
+         index=c(1, index+1, length(tp))
+        integrate(F1, start, stop, tp=tp, g=y, w=i, index=index, subdivisions=numSubdivisions, rel.tol=.Machine$double.eps^0.1)$value
     }))}
 
 
@@ -284,12 +314,13 @@ scoreF1 <- function(tp, y, w,  start, stop, index, numSubdivisions=500){
 #'
 #' @return A numeric value-- the L2 error.
 L2 <-function(tp, y1, y2, start, stop, index, numSubdivisions=2000){
+   tp=c(tp[1], tp, tp[length(tp)])
+   y1=c(y1[index[1]], y1, y1[index[length(index)]])
+   y2=c(y2[index[1]], y2, y2[index[length(index)]])
+   index=c(1, index+1, length(tp))
 
-   integrate(meanSqr, start, stop, tp=tp, g=y1, w=y2,
-             tp2=c(tp[1], tp[index], tp[length(tp)]),
-             g2=c(y1[index[1]], y1[index], y1[index[length(index)]]),
-             w2=c(y2[index[1]], y2[index], y2[index[length(index)]]),
-             spl=1, subdivisions=numSubdivisions)$value
+   integrate(F1, start, stop, tp=tp, g=y1, w=y2, index=index,
+               spl=1, subdivisions=numSubdivisions,rel.tol=.Machine$double.eps^0.1 )$value
 }
 
 #helper function
@@ -300,8 +331,22 @@ L2 <-function(tp, y1, y2, start, stop, index, numSubdivisions=2000){
 }
 #helper function
 F1 <-function(x, tp, g, w, index, spl=1){
+   # print(paste(tp[1], tp[2]))
+    if(spl==1){
+        if(length(index)==2 & tp[index[1]]==tp[index[2]]){
+            rep(0, length(x))
+        }else{
+      # print(paste('tp subset', tp[2:(length(tp)-1)]))
+      #      print(paste('index', index))   
+      #      print(length(index)==2)
+      #      print(paste('tp in ids', tp[index[1]], tp[index[2]]))
+      temp=approx(tp[2:(length(tp)-1)], g[2:(length(tp)-1)]-w[2:(length(tp)-1)], xout=x)$y-approx(tp[index], g[index]-w[index], xout=x)$y 
+      #print(paste('temp', temp))
+      temp*temp }
+    }else{
     temp=deBoorWrapper(x, tp, g, spl)-deBoorWrapper(x, tp, w, spl)-(deBoorWrapper(x, tp[index], g[index], spl)-deBoorWrapper(x, tp[index], w[index], spl))
     temp*temp
+    }
     }
 #helper function
 deBoorWrapper <- function(x, tp, values, spline){
@@ -369,3 +414,4 @@ backtrace<- function(max_index, index, edge, until=NA){
         }
     }
 }
+

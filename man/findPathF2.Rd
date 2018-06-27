@@ -4,20 +4,17 @@
 \alias{findPathF2}
 \title{Find best subset of points for follow-up experiments, using F2 metric}
 \usage{
-findPathF2(tp, y, training, numSubSamples, multiple = F, spline = 1,
-  resampleTraining = T, iter = 20, knots = 100, numPerts = 1000,
-  fast = T)
+findPathF2(tp, y, training, numSubSamples, spline = 1, resampleTraining = T,
+  iter = 20, knots = 100, numPerts = 1000, fast = T, mult = F)
 }
 \arguments{
 \item{tp}{A numerical vector of time points (or spatial coordinates along a single axis)}
 
-\item{y}{A numerical vector of measurements (of the control)-- this can be set to \code{rep(0, length(tp))} for calculating the shape of the curves only}
+\item{y}{A numerical vector of measurements (of the control).  If \code{mult==TRUE}, then this will be a matrix, where each column would be the y that corresponds with each training matrix.}
 
-\item{training}{Unless multiple is true, this is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements.  If multiple is true, this is a list of numerical matrices, each representing a different class of curves (for instance, different genes).}
+\item{training}{This is a numerical matrix of training data, where the rows represent different samples, columns represent different time points (or points on a single spatial axis), and the values correspond to measurements.   (If \code{mult==TRUE}, then this is instead a list of training matrices).}
 
 \item{numSubSamples}{integer that represents the number of time points that will be subsampled}
-
-\item{multiple}{A boolean that designates whether training is a matrix or a list of matrices}
 
 \item{spline}{A positive integer representing the spline used to interpolate between knots when generating perturbations.  Note that this does NOT designate the spline used when calculating the L2-error.}
 
@@ -30,6 +27,8 @@ findPathF2(tp, y, training, numSubSamples, multiple = F, spline = 1,
 \item{numPerts}{a positive integer, representing the number of sampled curves to output.}
 
 \item{fast}{is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.}
+
+\item{mult}{is a boolean, which will determine whether multiple genes are considered at once.}
 }
 \value{
 An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.

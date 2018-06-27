@@ -1,7 +1,7 @@
 Package: NITPicker
 Type: Package
 Title: Finds the Best Subset of Points to Sample
-Version: 0.1.2
+Version: 1.0.0
 Author: Daphne Ezer
 Maintainer: Daphne Ezer <dezer@turing.ac.uk>
 Description: Given a few examples of experiments over a time (or spatial) course,
@@ -18,6 +18,6 @@ RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-04-22 17:58:45 UTC; dezer
+Packaged: 2018-06-27 10:55:47 UTC; dezer
 Repository: CRAN
-Date/Publication: 2018-04-22 19:27:13 UTC
+Date/Publication: 2018-06-27 11:14:39 UTC

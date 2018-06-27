@@ -5,7 +5,7 @@
 \title{Find best subset of points for follow-up experiments, using F3 metric}
 \usage{
 findPathF3(tp, training1, training2, numSubSamples, spline = 1,
-  resampleTraining = T, iter = 20, knots = 100, numPerts = 1000,
+  resampleTraining = F, iter = 20, knots = 100, numPerts = 1000,
   fast = T)
 }
 \arguments{
