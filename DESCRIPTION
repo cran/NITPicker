@@ -1,7 +1,7 @@
 Package: NITPicker
 Type: Package
 Title: Finds the Best Subset of Points to Sample
-Version: 1.0.0
+Version: 1.0.1
 Author: Daphne Ezer
 Maintainer: Daphne Ezer <dezer@turing.ac.uk>
 Description: Given a few examples of experiments over a time (or spatial) course,
@@ -14,10 +14,10 @@ License: GPL (>= 2)
 Encoding: UTF-8
 Depends: fdasrvf, fda, stats, fda.usc
 URL: https://doi.org/10.1101/301796, https://daphneezer.wordpress.com
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-06-27 10:55:47 UTC; dezer
+Packaged: 2019-01-10 12:25:19 UTC; dezer
 Repository: CRAN
-Date/Publication: 2018-06-27 11:14:39 UTC
+Date/Publication: 2019-01-10 12:50:07 UTC

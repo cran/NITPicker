@@ -1,5 +1,7 @@
 NITPicker
 
+10/01/19: As requested by a reviewer of the manuscript, an additional parameter has been added that lets biologists add the relative importance of genes.  
+
 27/06/18: This new version has a few major changes.  Firstly, it was noticed that the 'fast mode' sometimes gave drastically different results compared to the 'un-fast mode'.  This has been fixed and now the fast mode produces much more stable results. Secondly, we added a mode that allows the user to run NITPicker on multiple genes at once.  
 
 22/04/18: This version has a 'fast mode' which switches the order of the summation and integration in the f1, f2, and f3 estimates, which can improve the speed of the algorithm.  In addition, the previous version of f3 has the L-4 estimate instead of the L-2, but this bug has now been fixed.  

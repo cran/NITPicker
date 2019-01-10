@@ -4,8 +4,9 @@
 \alias{findPathF1}
 \title{Find best subset of points for follow-up experiments, using F1 metric}
 \usage{
-findPathF1(tp, training, numSubSamples, spline = 1, resampleTraining = T,
-  iter = 20, knots = 100, numPerts = 1000, fast = T, mult = F)
+findPathF1(tp, training, numSubSamples, spline = 1,
+  resampleTraining = T, iter = 20, knots = 100, numPerts = 1000,
+  fast = T, mult = F, weights = c())
 }
 \arguments{
 \item{tp}{A numerical vector of time points (or spatial coordinates along a single axis)}
@@ -27,6 +28,8 @@ findPathF1(tp, training, numSubSamples, spline = 1, resampleTraining = T,
 \item{fast}{is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.}
 
 \item{mult}{is a boolean.  If mult is true, then training will be a list of training matrices.  This will be the case if there are multiple genes to consider at the same time.  Training sets will be normalised by the size of the L2-error.}
+
+\item{weights}{is a vector of numbers that is the same length as the number of training curves. This describes the relative importance of these curves.}
 }
 \value{
 An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.

@@ -89,6 +89,7 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
 #' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
 #' @param mult is a boolean.  If mult is true, then training will be a list of training matrices.  This will be the case if there are multiple genes to consider at the same time.  Training sets will be normalised by the size of the L2-error. 
+#' @param weights is a vector of numbers that is the same length as the number of training curves. This describes the relative importance of these curves.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples  
 #' #load data:
@@ -102,7 +103,7 @@ optimisationMatrixValueSingleGene <- function(i, j, edge, max_value, max_link, t
 #' 
 #' 
 #' 
-findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F){
+findPathF1 <- function(tp, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F, weights=c()){
     findPathF2(tp, rep(0, length(tp)), training, numSubSamples, spline=spline, resampleTraining=resampleTraining, iter=iter, knots=knots, numPerts=numPerts, fast=fast, mult=mult)
 }
 
@@ -173,6 +174,7 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' @param knots A positive integer-- for time warping to work optimally, the points must be evenly sampled.  This determines how many points do we evenly sample before conducting time warping
 #' @param numPerts a positive integer, representing the number of sampled curves to output.
 #' @param fast is a boolean, which determines whether the algorithm runs in fast mode where the sum of the perturbations is calculated prior to integration.
+#' @param weights is a vector of numbers that is the same length as the number of training curves. This describes the relative importance of these curves.
 #' @param mult is a boolean, which will determine whether multiple genes are considered at once.
 #' @return An integer vector of the indices of the time points selected to be subsampled.  The actual time points can be found by \code{tp[output]}.  The length of this vector should be \code{numSubSamples}.
 #' @examples 
@@ -187,7 +189,7 @@ findPathF3 <- function(tp, training1, training2, numSubSamples, spline=1, resamp
 #' \donttest{print(rownames(CanadianWeather$monthlyTemp)[a]) #month names selected}
 #' 
 #' 
-findPathF2 <- function(tp, y, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F){
+findPathF2 <- function(tp, y, training, numSubSamples, spline=1, resampleTraining=T, iter=20, knots=100, numPerts=1000, fast=T, mult=F, weights=c()){
     
     perts=NA
     w=NA
@@ -207,12 +209,19 @@ findPathF2 <- function(tp, y, training, numSubSamples, spline=1, resampleTrainin
                 L2(tp, y[,index], a[,i], min(tp), max(tp), index=c(1, length(tp)))
                 
             }))/numPerts
+            
         #divide by the sum
             
             aAdj=sapply(c(1:numPerts), function(i){
                 (a[,i]-y[,index])/aSize
                 
             })
+            
+            #Apply weights, if necessary
+            if(length(weights)==length(training)){
+                aAdj=aAdj*weights[index]
+            }
+            
         #add up the curves 
             apply(aAdj, 1, function(i){sum(i)})
            
